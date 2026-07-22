@@ -38,8 +38,8 @@ export function DataTablePagination({
   const items = pageItems(page, safePages);
 
   return (
-    <footer className="flex flex-col gap-3 border-t border-black/[0.05] bg-muted/30 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-5 dark:border-white/[0.06] dark:bg-muted/15">
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] text-muted-foreground">
+    <footer className="flex flex-col gap-3 border-t border-black/[0.05] bg-muted/30 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-5 dark:border-white/[0.06] dark:bg-muted/15">
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[13px] text-muted-foreground">
         <span>
           {total === 0 ? (
             'No results'

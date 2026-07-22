@@ -208,8 +208,9 @@ function SettingsForm({ payload, canWrite }: { payload: PlatformSettings; canWri
   const mfa = settings.mfa;
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[220px_1fr]">
-      <nav className="surface h-fit p-2 lg:sticky lg:top-24">
+    <div className="flex flex-col gap-6">
+      {/* Mobile: horizontal section chips */}
+      <nav className="-mx-1 flex gap-1.5 overflow-x-auto px-1 pb-1 lg:hidden">
         {SECTIONS.map((sec) => {
           const Icon = sec.icon;
           return (
@@ -218,23 +219,48 @@ function SettingsForm({ payload, canWrite }: { payload: PlatformSettings; canWri
               type="button"
               onClick={() => setTab(sec.id)}
               className={cn(
-                'flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-left text-sm font-medium transition-colors',
-                tab === sec.id ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                'inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold transition-colors',
+                tab === sec.id
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-muted text-muted-foreground hover:text-foreground'
               )}
             >
-              <Icon className="size-4 shrink-0 opacity-80" />
+              <Icon className="size-3.5 opacity-80" />
               {sec.label}
             </button>
           );
         })}
       </nav>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>{active.label}</CardTitle>
-          <CardDescription>{active.description}</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-5">
+      <div className="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)]">
+        <nav className="surface hidden h-fit p-2 lg:sticky lg:top-24 lg:block">
+          {SECTIONS.map((sec) => {
+            const Icon = sec.icon;
+            return (
+              <button
+                key={sec.id}
+                type="button"
+                onClick={() => setTab(sec.id)}
+                className={cn(
+                  'flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-left text-sm font-medium transition-colors',
+                  tab === sec.id
+                    ? 'bg-primary/10 text-primary'
+                    : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                )}
+              >
+                <Icon className="size-4 shrink-0 opacity-80" />
+                {sec.label}
+              </button>
+            );
+          })}
+        </nav>
+
+        <Card className="min-w-0">
+          <CardHeader>
+            <CardTitle>{active.label}</CardTitle>
+            <CardDescription>{active.description}</CardDescription>
+          </CardHeader>
+          <CardContent className="min-w-0 space-y-5">
           {tab === 'general' && (
             <div className="grid gap-4 sm:grid-cols-2">
               <TextInput label="Company name" value={asString(g.companyName)} onChange={(v) => set('general', 'companyName', v)} />
@@ -395,13 +421,14 @@ function SettingsForm({ payload, canWrite }: { payload: PlatformSettings; canWri
           )}
         </CardContent>
         {canWrite && (
-          <CardFooter className="justify-end">
-            <Button type="button" size="lg" disabled={m.isPending} onClick={() => m.mutate()}>
+          <CardFooter className="justify-end gap-2">
+            <Button type="button" size="lg" className="w-full sm:w-auto" disabled={m.isPending} onClick={() => m.mutate()}>
               {m.isPending ? 'Saving…' : 'Save all settings'}
             </Button>
           </CardFooter>
         )}
       </Card>
+      </div>
     </div>
   );
 }

@@ -37,8 +37,8 @@ export function DataTable<T>({
   const skeletonRows = pagination?.pageSize ?? 10;
 
   return (
-    <div className="surface overflow-hidden">
-      <div className="overflow-x-auto">
+    <div className="surface min-w-0 overflow-hidden">
+      <div className="-mx-0 overflow-x-auto overscroll-x-contain">
         <table className="w-full border-collapse text-left text-sm" style={{ minWidth }}>
           <thead>
             <tr className="border-b border-black/[0.06] dark:border-white/[0.08]">
