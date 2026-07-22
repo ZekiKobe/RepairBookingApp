@@ -272,7 +272,11 @@ export const broadcastNotification = async (req: AuthRequest, res: Response, nex
     }
     const aud = audience ?? 'all';
     const roleFilter =
-      aud === 'users' ? { role: 'user' } : aud === 'technicians' ? { role: 'technician' } : { role: { $in: ['user', 'technician'] } };
+      aud === 'users'
+        ? ({ role: 'user' as const })
+        : aud === 'technicians'
+          ? ({ role: 'technician' as const })
+          : ({ role: { $in: ['user', 'technician'] as const } });
     const users = await User.find({ ...roleFilter, isActive: true }).select('_id').lean();
     const batch = users.map((u) => ({
       user: u._id,
