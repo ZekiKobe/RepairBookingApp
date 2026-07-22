@@ -1,0 +1,131 @@
+@import 'tailwindcss';
+@plugin "tailwindcss-animate";
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
+
+:root {
+  --radius: 0.875rem;
+  --background: 210 20% 98%;
+  --foreground: 222 35% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 35% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 35% 12%;
+  --primary: 173 58% 28%;
+  --primary-foreground: 160 40% 98%;
+  --secondary: 210 18% 94%;
+  --secondary-foreground: 222 28% 18%;
+  --muted: 210 16% 95%;
+  --muted-foreground: 215 14% 40%;
+  --accent: 173 28% 94%;
+  --accent-foreground: 173 58% 20%;
+  --destructive: 0 72% 48%;
+  --border: 214 18% 88%;
+  --input: 214 18% 90%;
+  --ring: 173 58% 32%;
+  --sidebar: 200 28% 12%;
+  --sidebar-foreground: 200 20% 96%;
+  --sidebar-muted: 200 12% 58%;
+  --chart-1: 173 58% 32%;
+  --chart-2: 199 72% 42%;
+  --chart-3: 38 92% 50%;
+  --chart-4: 152 48% 38%;
+  --chart-5: 215 20% 48%;
+}
+
+.dark {
+  --background: 222 28% 7%;
+  --foreground: 210 25% 96%;
+  --card: 222 24% 10%;
+  --card-foreground: 210 25% 96%;
+  --popover: 222 24% 11%;
+  --popover-foreground: 210 25% 96%;
+  --primary: 173 48% 42%;
+  --primary-foreground: 173 58% 10%;
+  --secondary: 222 16% 15%;
+  --secondary-foreground: 210 25% 96%;
+  --muted: 222 16% 14%;
+  --muted-foreground: 215 12% 60%;
+  --accent: 173 24% 14%;
+  --accent-foreground: 160 35% 90%;
+  --destructive: 0 68% 48%;
+  --border: 222 14% 17%;
+  --input: 222 16% 14%;
+  --ring: 173 48% 42%;
+  --sidebar: 222 30% 6%;
+  --sidebar-foreground: 200 18% 94%;
+  --sidebar-muted: 200 10% 52%;
+  --chart-1: 173 52% 45%;
+  --chart-2: 199 70% 52%;
+  --chart-3: 38 90% 55%;
+  --chart-4: 152 45% 45%;
+  --chart-5: 215 18% 55%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+    font-feature-settings: 'ss01' on, 'cv11' on;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+  }
+}
+
+@layer utilities {
+  .page-shell {
+    @apply mx-auto max-w-[1440px] space-y-6;
+  }
+  /* Single calm surface: hairline edge + soft lift (no stacked shadows) */
+  .surface {
+    @apply rounded-xl bg-card text-card-foreground shadow-sm ring-1 ring-black/[0.06] dark:shadow-none dark:ring-white/[0.08];
+  }
+  .filter-bar {
+    @apply surface flex flex-col gap-3 p-4 sm:flex-row sm:flex-wrap sm:items-end;
+  }
+  .select-field {
+    @apply mt-1.5 flex h-10 w-full min-w-[10rem] rounded-lg border border-input bg-background px-3 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring;
+  }
+}

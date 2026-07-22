@@ -1,0 +1,19 @@
+{
+  "@@locale": "en",
+  "appTitle": "Repair Booking",
+  "splashTagline": "Trusted home repairs",
+  "loginTitle": "Welcome Back",
+  "loginSubtitle": "Sign in to your account to continue",
+  "settingsTitle": "Settings",
+  "settingsThemeSection": "Appearance",
+  "settingsThemeSystem": "System",
+  "settingsThemeLight": "Light",
+  "settingsThemeDark": "Dark",
+  "settingsThemeLightOnlySubtitle": "The app always uses light mode for clear, consistent reading.",
+  "notificationFeedTitle": "Notifications",
+  "notificationFeedSubtitle": "Booking updates and messages",
+  "semanticsLoginButton": "Sign in with phone",
+  "semanticsGoogleSignIn": "Sign in with Google",
+  "bookingLoadError": "Could not load booking",
+  "retry": "Retry"
+}

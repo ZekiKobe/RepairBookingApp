@@ -1,0 +1,62 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/app.js",
+    "dev": "nodemon src/app.ts",
+    "build": "tsc",
+    "seed": "ts-node src/seed.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/multer": "^2.1.0",
+    "africastalking": "^0.7.9",
+    "axios": "^1.15.0",
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.9.0",
+    "compression": "^1.8.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.1",
+    "express": "^5.2.1",
+<<<<<<< HEAD
+    "express-rate-limit": "^8.5.2",
+    "firebase-admin": "^13.8.0",
+    "google-auth-library": "^10.6.2",
+=======
+    "firebase-admin": "^13.8.0",
+>>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
+    "helmet": "^8.1.0",
+    "joi": "^18.1.2",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.4.1",
+    "morgan": "^1.10.1",
+    "multer": "^2.1.1",
+<<<<<<< HEAD
+    "socket.io": "^4.8.3",
+=======
+>>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
+    "twilio": "^5.13.1"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^3.0.0",
+    "@types/compression": "^1.8.1",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/morgan": "^1.9.10",
+    "@types/ms": "^2.1.0",
+    "@types/node": "^25.5.2",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+<<<<<<< HEAD
+    "typescript": "~5.6.3"
+=======
+    "typescript": "^6.0.2"
+>>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
+  }
+}

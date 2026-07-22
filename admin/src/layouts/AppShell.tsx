@@ -1,0 +1,262 @@
+import { useState } from 'react';
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import {
+  Bell,
+  ClipboardList,
+  FileBarChart,
+  LayoutDashboard,
+  Menu,
+  Moon,
+  PanelLeftClose,
+  PanelLeft,
+  ScrollText,
+  Settings,
+  Sun,
+  LogOut,
+  Users,
+  Wallet,
+  Wrench,
+  X,
+} from 'lucide-react';
+import { useTheme } from 'next-themes';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { initials } from '@/lib/format';
+import { useAuthStore } from '@/state/authStore';
+import { P, type PermissionKey } from '@/constants/permissions';
+import type { LucideIcon } from 'lucide-react';
+
+const navGroups: { label: string; items: { to: string; label: string; perm: PermissionKey; icon: LucideIcon }[] }[] = [
+  {
+    label: 'Overview',
+    items: [
+      { to: '/', label: 'Dashboard', perm: P.DASHBOARD_READ, icon: LayoutDashboard },
+      { to: '/bookings', label: 'Bookings', perm: P.BOOKINGS_READ, icon: ClipboardList },
+    ],
+  },
+  {
+    label: 'People',
+    items: [
+      { to: '/users', label: 'Users', perm: P.USERS_READ, icon: Users },
+      { to: '/technicians', label: 'Technicians', perm: P.TECHNICIANS_READ, icon: Wrench },
+    ],
+  },
+  {
+    label: 'Business',
+    items: [
+      { to: '/finance', label: 'Finance', perm: P.FINANCE_READ, icon: Wallet },
+      { to: '/reports', label: 'Reports', perm: P.REPORTS_READ, icon: FileBarChart },
+      { to: '/notifications', label: 'Notifications', perm: P.NOTIFICATIONS_READ, icon: Bell },
+    ],
+  },
+  {
+    label: 'System',
+    items: [
+      { to: '/settings', label: 'Settings', perm: P.SETTINGS_READ, icon: Settings },
+      { to: '/audit', label: 'Audit log', perm: P.AUDIT_READ, icon: ScrollText },
+    ],
+  },
+];
+
+const pageTitles: Record<string, string> = {
+  '/': 'Dashboard',
+  '/bookings': 'Bookings',
+  '/users': 'Users',
+  '/technicians': 'Technicians',
+  '/finance': 'Finance',
+  '/notifications': 'Notifications',
+  '/reports': 'Reports',
+  '/settings': 'Settings',
+  '/audit': 'Audit log',
+};
+
+function resolveTitle(pathname: string) {
+  if (pageTitles[pathname]) return pageTitles[pathname];
+  if (pathname.startsWith('/bookings/')) return 'Booking detail';
+  if (pathname.startsWith('/users/')) return 'User profile';
+  return 'Admin';
+}
+
+export default function AppShell() {
+  const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const user = useAuthStore((s) => s.user);
+  const clearSession = useAuthStore((s) => s.clearSession);
+  const hasPermission = useAuthStore((s) => s.hasPermission);
+  const title = resolveTitle(location.pathname);
+
+  function logout() {
+    clearSession();
+    navigate('/login', { replace: true });
+  }
+
+  const sidebarWidth = collapsed ? 'lg:ml-[4.5rem]' : 'lg:ml-64';
+
+  return (
+    <div className="flex min-h-screen bg-background">
+      <aside
+        className={cn(
+          'fixed inset-y-0 left-0 z-40 flex shrink-0 flex-col bg-sidebar text-sidebar-foreground transition-[width,transform] duration-200',
+          collapsed ? 'w-[4.5rem]' : 'w-64',
+          mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+        )}
+      >
+        <div className={cn('flex h-16 shrink-0 items-center gap-3 px-4', collapsed && 'justify-center px-2')}>
+          <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground">
+            RB
+          </div>
+          {!collapsed && (
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-sm font-bold tracking-tight">RepairBooking</p>
+              <p className="truncate text-[11px] text-sidebar-muted">Operations console</p>
+            </div>
+          )}
+          {!collapsed && (
+            <Button
+              variant="ghost"
+              size="icon"
+              className="hidden size-8 shrink-0 text-sidebar-muted hover:bg-white/10 hover:text-sidebar-foreground lg:flex"
+              onClick={() => setCollapsed(true)}
+            >
+              <PanelLeftClose className="size-4" />
+            </Button>
+          )}
+        </div>
+
+        <nav className="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto overflow-x-hidden px-3 pb-4 pt-1">
+          {navGroups.map((group) => {
+            const items = group.items.filter((n) => hasPermission(n.perm));
+            if (!items.length) return null;
+            return (
+              <div key={group.label}>
+                {!collapsed && (
+                  <p className="mb-1.5 px-2.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-sidebar-muted/80">
+                    {group.label}
+                  </p>
+                )}
+                <div className="flex flex-col gap-0.5">
+                  {items.map((n) => {
+                    const Icon = n.icon;
+                    return (
+                      <NavLink
+                        key={n.to}
+                        to={n.to}
+                        end={n.to === '/'}
+                        onClick={() => setMobileOpen(false)}
+                        title={collapsed ? n.label : undefined}
+                        className={({ isActive }) =>
+                          cn(
+                            'group relative flex items-center gap-3 rounded-lg px-2.5 py-2 text-[13px] font-medium transition-colors',
+                            isActive
+                              ? 'bg-white/10 text-sidebar-foreground'
+                              : 'text-sidebar-muted hover:bg-white/[0.06] hover:text-sidebar-foreground',
+                            collapsed && 'justify-center px-2'
+                          )
+                        }
+                      >
+                        {({ isActive }) => (
+                          <>
+                            {isActive && (
+                              <span className="absolute left-0 top-1/2 h-5 w-0.5 -translate-y-1/2 rounded-full bg-primary" />
+                            )}
+                            <Icon className="size-4 shrink-0 opacity-90" aria-hidden />
+                            {!collapsed && <span className="truncate">{n.label}</span>}
+                          </>
+                        )}
+                      </NavLink>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </nav>
+
+        <div className={cn('p-3', collapsed && 'flex justify-center')}>
+          {collapsed ? (
+            <Button
+              variant="ghost"
+              size="icon"
+              className="hidden size-9 text-sidebar-muted hover:bg-white/10 lg:flex"
+              onClick={() => setCollapsed(false)}
+            >
+              <PanelLeft className="size-4" />
+            </Button>
+          ) : (
+            <div className="flex items-center gap-2.5 rounded-xl bg-white/[0.04] px-2.5 py-2">
+              <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/20 text-[11px] font-semibold text-primary-foreground/90">
+                {initials(user?.firstName, user?.lastName)}
+              </div>
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-xs font-semibold">
+                  {user?.firstName} {user?.lastName}
+                </p>
+                <p className="truncate text-[10px] text-sidebar-muted">Administrator</p>
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="size-8 shrink-0 text-sidebar-muted hover:bg-white/10 hover:text-sidebar-foreground"
+                onClick={logout}
+                aria-label="Log out"
+              >
+                <LogOut className="size-3.5" />
+              </Button>
+            </div>
+          )}
+        </div>
+      </aside>
+
+      {mobileOpen && (
+        <button
+          type="button"
+          className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm lg:hidden"
+          aria-label="Close menu"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+
+      <div className={cn('flex min-w-0 flex-1 flex-col transition-[margin] duration-200', sidebarWidth)}>
+        <header className="sticky top-0 z-20 flex h-16 shrink-0 items-center gap-3 bg-card/90 px-4 backdrop-blur-xl supports-[backdrop-filter]:bg-card/75 md:px-6">
+          <Button variant="ghost" size="icon" className="shrink-0 lg:hidden" onClick={() => setMobileOpen(true)}>
+            {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+          </Button>
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-sm font-semibold tracking-tight md:text-base">{title}</p>
+            <p className="hidden text-xs text-muted-foreground sm:block">Manage operations in real time</p>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="rounded-full text-muted-foreground"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              aria-label="Toggle theme"
+            >
+              <Sun className="size-4 dark:hidden" />
+              <Moon className="hidden size-4 dark:inline" />
+            </Button>
+            <div className="ml-1 hidden items-center gap-2 rounded-full bg-muted/50 py-1 pl-1 pr-3 sm:flex">
+              <div className="flex size-7 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
+                {initials(user?.firstName, user?.lastName)}
+              </div>
+              <span className="max-w-[9rem] truncate text-xs font-medium">
+                {user?.firstName} {user?.lastName}
+              </span>
+            </div>
+            <Button variant="outline" size="sm" className="ml-1 hidden rounded-full sm:inline-flex" onClick={logout}>
+              <LogOut className="size-3.5 opacity-80" />
+              Log out
+            </Button>
+          </div>
+        </header>
+        <main className="min-h-[calc(100vh-4rem)] flex-1 px-4 py-6 md:px-7 md:py-7">
+          <Outlet />
+        </main>
+      </div>
+    </div>
+  );
+}
