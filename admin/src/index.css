@@ -28,6 +28,9 @@
   --color-sidebar: hsl(var(--sidebar));
   --color-sidebar-foreground: hsl(var(--sidebar-foreground));
   --color-sidebar-muted: hsl(var(--sidebar-muted));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
   --color-chart-1: hsl(var(--chart-1));
   --color-chart-2: hsl(var(--chart-2));
   --color-chart-3: hsl(var(--chart-3));
@@ -55,9 +58,12 @@
   --border: 214 18% 88%;
   --input: 214 18% 88%;
   --ring: 173 58% 32%;
-  --sidebar: 200 28% 12%;
-  --sidebar-foreground: 200 20% 96%;
-  --sidebar-muted: 200 12% 58%;
+  --sidebar: 0 0% 100%;
+  --sidebar-foreground: 222 35% 12%;
+  --sidebar-muted: 215 14% 46%;
+  --sidebar-border: 214 18% 90%;
+  --sidebar-accent: 173 28% 94%;
+  --sidebar-accent-foreground: 173 58% 22%;
   --chart-1: 173 58% 32%;
   --chart-2: 199 72% 42%;
   --chart-3: 38 92% 50%;
@@ -87,6 +93,9 @@
   --sidebar: 222 30% 6%;
   --sidebar-foreground: 200 18% 94%;
   --sidebar-muted: 200 10% 52%;
+  --sidebar-border: 222 14% 14%;
+  --sidebar-accent: 222 16% 14%;
+  --sidebar-accent-foreground: 160 35% 92%;
   --chart-1: 173 52% 45%;
   --chart-2: 199 70% 52%;
   --chart-3: 38 90% 55%;

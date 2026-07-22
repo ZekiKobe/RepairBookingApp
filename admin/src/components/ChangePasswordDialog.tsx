@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { toast } from 'sonner';
+import axios from 'axios';
 import { changePassword } from '@/api/auth.api';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -27,6 +28,16 @@ type Props = {
   onOpenChange: (open: boolean) => void;
 };
 
+function errorMessage(err: unknown) {
+  if (axios.isAxiosError(err)) {
+    const data = err.response?.data as { message?: string } | undefined;
+    if (data?.message) return data.message;
+    if (err.response?.status === 404) return 'Change-password API not found. Restart the backend after rebuilding.';
+  }
+  if (err instanceof Error && err.message) return err.message;
+  return 'Could not update password';
+}
+
 export function ChangePasswordDialog({ open, onOpenChange }: Props) {
   const [submitting, setSubmitting] = useState(false);
   const {
@@ -47,8 +58,8 @@ export function ChangePasswordDialog({ open, onOpenChange }: Props) {
       toast.success('Password updated');
       reset();
       onOpenChange(false);
-    } catch {
-      toast.error('Could not update password');
+    } catch (err) {
+      toast.error(errorMessage(err));
     } finally {
       setSubmitting(false);
     }

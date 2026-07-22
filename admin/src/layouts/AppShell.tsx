@@ -135,7 +135,7 @@ export default function AppShell() {
     <div className="flex min-h-dvh min-h-screen overflow-x-hidden bg-background">
       <aside
         className={cn(
-          'fixed inset-y-0 left-0 z-50 flex w-[min(18rem,88vw)] shrink-0 flex-col bg-sidebar text-sidebar-foreground transition-[width,transform] duration-200 lg:z-40',
+          'fixed inset-y-0 left-0 z-50 flex w-[min(18rem,88vw)] shrink-0 flex-col border-r border-sidebar-border bg-sidebar text-sidebar-foreground transition-[width,transform] duration-200 lg:z-40',
           // Desktop width only — mobile drawer always expanded
           collapsed ? 'lg:w-[4.5rem]' : 'lg:w-64',
           mobileOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full lg:translate-x-0 lg:shadow-none'
@@ -155,7 +155,7 @@ export default function AppShell() {
             <Button
               variant="ghost"
               size="icon"
-              className="hidden size-8 shrink-0 text-sidebar-muted hover:bg-white/10 hover:text-sidebar-foreground lg:flex"
+              className="hidden size-8 shrink-0 text-sidebar-muted hover:bg-sidebar-accent hover:text-sidebar-accent-foreground lg:flex"
               onClick={() => setCollapsed(true)}
             >
               <PanelLeftClose className="size-4" />
@@ -164,7 +164,7 @@ export default function AppShell() {
           <Button
             variant="ghost"
             size="icon"
-            className="size-8 shrink-0 text-sidebar-muted hover:bg-white/10 lg:hidden"
+            className="size-8 shrink-0 text-sidebar-muted hover:bg-sidebar-accent hover:text-sidebar-accent-foreground lg:hidden"
             onClick={() => setMobileOpen(false)}
             aria-label="Close menu"
           >
@@ -197,8 +197,8 @@ export default function AppShell() {
                           cn(
                             'group relative flex items-center gap-3 rounded-lg px-2.5 py-2.5 text-[13px] font-medium transition-colors',
                             isActive
-                              ? 'bg-white/10 text-sidebar-foreground'
-                              : 'text-sidebar-muted hover:bg-white/[0.06] hover:text-sidebar-foreground',
+                              ? 'bg-sidebar-accent text-sidebar-accent-foreground'
+                              : 'text-sidebar-muted hover:bg-sidebar-accent/70 hover:text-sidebar-foreground',
                             !showLabels && 'lg:justify-center lg:px-2'
                           )
                         }
@@ -221,19 +221,19 @@ export default function AppShell() {
           })}
         </nav>
 
-        <div className={cn('p-3', !showLabels && 'lg:flex lg:justify-center')}>
+        <div className={cn('border-t border-sidebar-border p-3', !showLabels && 'lg:flex lg:justify-center')}>
           {!showLabels ? (
             <Button
               variant="ghost"
               size="icon"
-              className="hidden size-9 text-sidebar-muted hover:bg-white/10 lg:flex"
+              className="hidden size-9 text-sidebar-muted hover:bg-sidebar-accent lg:flex"
               onClick={() => setCollapsed(false)}
             >
               <PanelLeft className="size-4" />
             </Button>
           ) : (
-            <div className="flex items-center gap-2.5 rounded-xl bg-white/[0.04] px-2.5 py-2">
-              <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/20 text-[11px] font-semibold text-primary-foreground/90">
+            <div className="flex items-center gap-2.5 rounded-xl bg-sidebar-accent/60 px-2.5 py-2">
+              <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary text-[11px] font-semibold text-primary-foreground">
                 {initials(user?.firstName, user?.lastName)}
               </div>
               <div className="min-w-0 flex-1">
