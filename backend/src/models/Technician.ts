@@ -18,11 +18,8 @@ export interface ITechnician extends Document {
   availability: IAvailability[];
   isAvailable: boolean;
   isApproved: boolean;
-<<<<<<< HEAD
   /** When true, technician cannot be assigned new work. */
   isSuspended: boolean;
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   approvalDate?: Date;
   rating: number;
   reviewCount: number;
@@ -76,14 +73,11 @@ const TechnicianSchema: Schema = new Schema({
     type: Boolean,
     default: false,
   },
-<<<<<<< HEAD
   isSuspended: {
     type: Boolean,
     default: false,
     index: true,
   },
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   approvalDate: {
     type: Date,
   },

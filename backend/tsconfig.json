@@ -12,10 +12,7 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
-<<<<<<< HEAD
     "ignoreDeprecations": "6.0",
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true

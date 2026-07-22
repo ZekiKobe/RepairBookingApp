@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-<<<<<<< HEAD
 import { registerUser, loginUser, refreshAccessToken, generateTokens } from '../services/auth.service';
 import { computePermissionsForAdminRole } from '../config/adminPermissions';
 import type { AdminAppRole } from '../config/adminPermissions';
@@ -11,15 +10,6 @@ import {
   isPasswordResetOtpValid,
   consumePasswordResetOtp,
 } from '../services/otp.service';
-=======
-import { registerUser, loginUser, refreshAccessToken } from '../services/auth.service';
-import User from '../models/User';
-import * as bcrypt from 'bcryptjs';
-import { getSmsProvider } from '../services/sms';
-
-// ── In-memory OTP store { phone -> { otp, expiresAt } } ──────────────────────
-const otpStore = new Map<string, { otp: string; expiresAt: number }>();
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
 export const register = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
@@ -74,7 +64,6 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
           role: user.role,
           avatar: user.avatar,
           location: user.location,
-<<<<<<< HEAD
           ...(user.role === 'admin'
             ? {
                 adminRole: (user as { adminRole?: AdminAppRole }).adminRole ?? 'super_admin',
@@ -83,8 +72,6 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
                 ),
               }
             : {}),
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
         },
         tokens,
       },
@@ -118,14 +105,10 @@ export const refreshToken = async (req: Request, res: Response, next: NextFuncti
 export const getMe = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const user = (req as any).user;
-<<<<<<< HEAD
     const adminRole =
       user.role === 'admin' ? ((user as { adminRole?: AdminAppRole }).adminRole ?? 'super_admin') : undefined;
     const permissions = user.role === 'admin' ? computePermissionsForAdminRole(adminRole) : [];
 
-=======
-    
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     res.json({
       success: true,
       data: {
@@ -139,10 +122,7 @@ export const getMe = async (req: Request, res: Response, next: NextFunction): Pr
           avatar: user.avatar,
           location: user.location,
           isVerified: user.isVerified,
-<<<<<<< HEAD
           ...(user.role === 'admin' ? { adminRole, permissions } : {}),
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
         },
       },
     });
@@ -167,11 +147,7 @@ export const forgotPassword = async (req: Request, res: Response, next: NextFunc
     }
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-<<<<<<< HEAD
     await savePasswordResetOtp(phone, otp, 10 * 60 * 1000);
-=======
-    otpStore.set(phone, { otp, expiresAt: Date.now() + 10 * 60 * 1000 }); // 10 min
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
     // Send OTP via configured SMS provider
     await getSmsProvider().sendOtp(phone, otp);
@@ -196,31 +172,12 @@ export const verifyOtp = async (req: Request, res: Response, next: NextFunction)
       return;
     }
 
-<<<<<<< HEAD
     const valid = await isPasswordResetOtpValid(phone, otp);
     if (!valid) {
       res.status(400).json({ success: false, message: 'Invalid or expired OTP' });
       return;
     }
 
-=======
-    const record = otpStore.get(phone);
-    if (!record) {
-      res.status(400).json({ success: false, message: 'OTP not found. Please request a new one' });
-      return;
-    }
-    if (Date.now() > record.expiresAt) {
-      otpStore.delete(phone);
-      res.status(400).json({ success: false, message: 'OTP has expired. Please request a new one' });
-      return;
-    }
-    if (record.otp !== otp) {
-      res.status(400).json({ success: false, message: 'Invalid OTP' });
-      return;
-    }
-
-    // Mark as verified by keeping the record (will be consumed at reset step)
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     res.json({ success: true, message: 'OTP verified successfully' });
   } catch (error) {
     next(error);
@@ -240,13 +197,8 @@ export const resetPassword = async (req: Request, res: Response, next: NextFunct
       return;
     }
 
-<<<<<<< HEAD
     const consumed = await consumePasswordResetOtp(phone, otp);
     if (!consumed) {
-=======
-    const record = otpStore.get(phone);
-    if (!record || Date.now() > record.expiresAt || record.otp !== otp) {
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       res.status(400).json({ success: false, message: 'Invalid or expired OTP' });
       return;
     }
@@ -259,17 +211,12 @@ export const resetPassword = async (req: Request, res: Response, next: NextFunct
 
     user.password = newPassword; // pre-save hook will hash it
     await user.save();
-<<<<<<< HEAD
-=======
-    otpStore.delete(phone);
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
     res.json({ success: true, message: 'Password reset successfully' });
   } catch (error) {
     next(error);
   }
 };
-<<<<<<< HEAD
 
 // ── Google OAuth2 ID-token auth (google-auth-library; Firebase Admin optional fallback) ──
 async function verifyGoogleCredential(
@@ -393,5 +340,3 @@ export const googleAuth = async (req: Request, res: Response, next: NextFunction
     next(error);
   }
 };
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739

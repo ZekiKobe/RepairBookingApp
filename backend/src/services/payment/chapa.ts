@@ -1,9 +1,5 @@
 import axios from 'axios';
-<<<<<<< HEAD
-import { PaymentProvider, PaymentInitResult, PaymentVerifyResult, RefundResult } from './types';
-=======
 import { PaymentProvider, PaymentInitResult, PaymentVerifyResult } from './types';
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 import { chapaConfig } from '../../config/providers';
 
 export class ChapaPaymentProvider implements PaymentProvider {
@@ -72,11 +68,4 @@ export class ChapaPaymentProvider implements PaymentProvider {
       amount: parseFloat(res.data?.data?.amount || '0'),
     };
   }
-<<<<<<< HEAD
-
-  async refund(): Promise<RefundResult> {
-    return { status: 'failed', message: 'Chapa refund must be processed via dashboard or extended API' };
-  }
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 }

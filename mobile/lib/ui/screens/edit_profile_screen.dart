@@ -92,13 +92,8 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                                   ? const Center(child: SizedBox(width: 28, height: 28, child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2.5)))
                                   : _localAvatarFile != null
                                     ? ClipOval(child: Image.file(_localAvatarFile!, width: 100, height: 100, fit: BoxFit.cover))
-<<<<<<< HEAD
                                     : user?.avatar != null && user!.avatar!.trim().isNotEmpty
                                       ? ClipOval(child: Image.network(user.avatar!.trim(), width: 100, height: 100, fit: BoxFit.cover,
-=======
-                                    : user?.avatar != null
-                                      ? ClipOval(child: Image.network(user!.avatar!, width: 100, height: 100, fit: BoxFit.cover,
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                                           errorBuilder: (_, __, ___) => Center(child: Text(initials, style: const TextStyle(color: Colors.white, fontSize: 36, fontWeight: FontWeight.bold)))))
                                       : Center(child: Text(initials, style: const TextStyle(color: Colors.white, fontSize: 36, fontWeight: FontWeight.bold))),
                               ),
@@ -114,15 +109,12 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
                           ),
                         ),
                       ),
-<<<<<<< HEAD
                       const SizedBox(height: AppTheme.spacingSm),
                       Text(
                         'Tap to upload or change your photo',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 12, color: AppTheme.textTertiary),
                       ),
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                       const SizedBox(height: AppTheme.spacingXl),
 
                       // Phone (read-only)
@@ -182,7 +174,6 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
     final picker = ImagePicker();
     final picked = await picker.pickImage(source: ImageSource.gallery, imageQuality: 80, maxWidth: 800);
     if (picked == null) return;
-<<<<<<< HEAD
     setState(() {
       _localAvatarFile = File(picked.path);
       _isUploadingAvatar = true;
@@ -194,24 +185,11 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
         _isUploadingAvatar = false;
         _localAvatarFile = null;
       });
-=======
-    setState(() { _localAvatarFile = File(picked.path); _isUploadingAvatar = true; });
-    final url = await UploadService().uploadAvatar(File(picked.path));
-    setState(() => _isUploadingAvatar = false);
-    if (url != null && mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('Profile photo updated!'),
-        backgroundColor: AppTheme.success,
-        behavior: SnackBarBehavior.floating,
-      ));
-    } else if (mounted) {
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('Failed to upload photo'),
         backgroundColor: AppTheme.error,
         behavior: SnackBarBehavior.floating,
       ));
-<<<<<<< HEAD
       return;
     }
 
@@ -233,8 +211,6 @@ class _EditProfileScreenState extends ConsumerState<EditProfileScreen> {
         backgroundColor: AppTheme.success,
         behavior: SnackBarBehavior.floating,
       ));
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     }
   }
 

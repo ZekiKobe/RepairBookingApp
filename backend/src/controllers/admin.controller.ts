@@ -129,7 +129,6 @@ export const toggleUserStatus = async (req: Request, res: Response, next: NextFu
     next(error);
   }
 };
-<<<<<<< HEAD
 
 export const getAuditLogs = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
@@ -147,5 +146,3 @@ export const getAuditLogs = async (req: Request, res: Response, next: NextFuncti
     next(error);
   }
 };
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739

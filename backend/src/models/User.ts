@@ -1,9 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 import * as bcrypt from 'bcryptjs';
-<<<<<<< HEAD
 import type { AdminAppRole } from '../config/adminPermissions';
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
 export interface ILocation {
   type: 'Point';
@@ -17,11 +14,8 @@ export interface IUser extends Document {
   email?: string;
   password: string;
   role: 'user' | 'technician' | 'admin';
-<<<<<<< HEAD
   /** Sub-role for platform administrators (ignored when role !== admin). */
   adminRole?: AdminAppRole;
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   firstName: string;
   lastName: string;
   avatar?: string;
@@ -29,10 +23,7 @@ export interface IUser extends Document {
   isActive: boolean;
   isVerified: boolean;
   fcmToken?: string;
-<<<<<<< HEAD
   googleUid?: string;
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   createdAt: Date;
   updatedAt: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
@@ -69,14 +60,11 @@ const UserSchema: Schema = new Schema({
     enum: ['user', 'technician', 'admin'],
     default: 'user',
   },
-<<<<<<< HEAD
   adminRole: {
     type: String,
     enum: ['super_admin', 'operations', 'support', 'finance', 'technician_manager', 'read_only'],
     default: undefined,
   },
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   firstName: {
     type: String,
     required: [true, 'First name is required'],
@@ -105,14 +93,11 @@ const UserSchema: Schema = new Schema({
     type: String,
     select: false,
   },
-<<<<<<< HEAD
   googleUid: {
     type: String,
     unique: true,
     sparse: true,
   },
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 }, {
   timestamps: true,
   toJSON: { virtuals: true },

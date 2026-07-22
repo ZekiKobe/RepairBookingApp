@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-<<<<<<< HEAD
 import 'package:repair_booking/l10n/app_localizations.dart';
 
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 import '../../ui/themes/app_theme.dart';
 import '../../models/notification_model.dart';
 import '../../providers/notifications_provider.dart';
@@ -63,10 +60,7 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(notificationsProvider);
-<<<<<<< HEAD
     final l10n = AppLocalizations.of(context)!;
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
     return Scaffold(
       backgroundColor: AppTheme.background,
@@ -79,7 +73,6 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen> {
                 padding: const EdgeInsets.fromLTRB(AppTheme.spacingLg, AppTheme.spacingLg, AppTheme.spacingLg, 0),
                 child: Row(
                   children: [
-<<<<<<< HEAD
                     GestureDetector(
                       onTap: () => Navigator.of(context).pop(),
                       child: Container(
@@ -117,11 +110,6 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen> {
                           ),
                         ],
                       ),
-=======
-                    const Expanded(
-                      child: Text('Notifications',
-                          style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: AppTheme.textPrimary)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                     ),
                     if (state.unreadCount > 0)
                       TextButton(
@@ -174,22 +162,14 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen> {
                       for (int i = 0; i < state.notifications.length; i++) ...[
                         _buildTile(state.notifications[i]),
                         if (i < state.notifications.length - 1)
-<<<<<<< HEAD
                           const Divider(height: 1, thickness: 1, color: AppTheme.hairline),
-=======
-                          const Divider(height: 1, thickness: 1, color: Color(0xFF2C3044)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                       ],
                     ],
                   ),
                 ),
               ),
 
-<<<<<<< HEAD
             const SliverToBoxAdapter(child: SizedBox(height: AppTheme.spacingLg)),
-=======
-            const SliverToBoxAdapter(child: SizedBox(height: 100)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
           ],
         ),
       ),

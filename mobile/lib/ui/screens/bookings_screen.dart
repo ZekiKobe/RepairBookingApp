@@ -85,11 +85,7 @@ class _BookingsScreenState extends ConsumerState<BookingsScreen> {
                       decoration: BoxDecoration(
                         color: AppTheme.surface,
                         borderRadius: BorderRadius.circular(12),
-<<<<<<< HEAD
                         border: Border.all(color: AppTheme.hairline, width: 1),
-=======
-                        border: Border.all(color: const Color(0xFF2C3044), width: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                       ),
                       child: const Icon(Icons.refresh, color: AppTheme.textPrimary, size: 20),
                     ),
@@ -254,11 +250,7 @@ class _FilterChip extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             border: isSelected
                 ? null
-<<<<<<< HEAD
                 : Border.all(color: AppTheme.hairline, width: 1),
-=======
-                : Border.all(color: const Color(0xFF2C3044), width: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -342,11 +334,7 @@ class _BookingCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppTheme.surface,
           borderRadius: BorderRadius.circular(16),
-<<<<<<< HEAD
           border: Border.all(color: AppTheme.hairline, width: 1),
-=======
-          border: Border.all(color: const Color(0xFF2C3044), width: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.2),

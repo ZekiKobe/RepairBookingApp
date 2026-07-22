@@ -6,10 +6,7 @@ import '../../providers/bookings_provider.dart';
 import '../../models/booking_model.dart';
 import '../../providers/notifications_provider.dart';
 import 'notifications_screen.dart';
-<<<<<<< HEAD
 import '../widgets/drawer_opener.dart';
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
 class TechnicianHomeScreen extends ConsumerStatefulWidget {
   const TechnicianHomeScreen({super.key});
@@ -44,7 +41,6 @@ class _TechnicianHomeScreenState extends ConsumerState<TechnicianHomeScreen> {
               ref.read(bookingsProvider.notifier).loadBookings(isTechnician: true),
           child: CustomScrollView(
             slivers: [
-<<<<<<< HEAD
               // Sticky top bar
               SliverAppBar(
                 pinned: true,
@@ -117,12 +113,6 @@ class _TechnicianHomeScreenState extends ConsumerState<TechnicianHomeScreen> {
               SliverToBoxAdapter(
                 child: Container(
                   margin: const EdgeInsets.fromLTRB(AppTheme.spacingLg, AppTheme.spacingSm, AppTheme.spacingLg, AppTheme.spacingLg),
-=======
-              // Header
-              SliverToBoxAdapter(
-                child: Container(
-                  margin: const EdgeInsets.all(AppTheme.spacingLg),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                   padding: const EdgeInsets.all(AppTheme.spacingLg),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
@@ -133,7 +123,6 @@ class _TechnicianHomeScreenState extends ConsumerState<TechnicianHomeScreen> {
                     borderRadius: BorderRadius.circular(AppTheme.radiusXl),
                     boxShadow: AppTheme.shadowMd,
                   ),
-<<<<<<< HEAD
                   child: Row(
                     children: [
                       _statChip('${pending.length}', 'New Requests', Icons.notification_important_outlined),
@@ -141,67 +130,6 @@ class _TechnicianHomeScreenState extends ConsumerState<TechnicianHomeScreen> {
                       _statChip('${active.length}', 'Active Jobs', Icons.construction_outlined),
                       const SizedBox(width: AppTheme.spacingMd),
                       _statChip('${completed.length}', 'Completed', Icons.check_circle_outline),
-=======
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            width: 52, height: 52,
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.2),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Center(
-                              child: Text(
-                                _initials(user?.fullName ?? ''),
-                                style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: AppTheme.spacingMd),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Hello, ${user?.firstName ?? 'Technician'}!',
-                                    style: const TextStyle(color: Colors.white70, fontSize: 14)),
-                                Text(user?.fullName ?? '', style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
-                              ],
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                                decoration: BoxDecoration(color: Colors.white.withOpacity(0.2), borderRadius: BorderRadius.circular(AppTheme.radiusFull)),
-                                child: Row(
-                                  children: const [
-                                    Icon(Icons.circle, color: Color(0xFF4ADE80), size: 8),
-                                    SizedBox(width: 6),
-                                    Text('Online', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600)),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(width: 8),
-                              _buildBellButton(context),
-                            ],
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: AppTheme.spacingLg),
-                      // Stats row
-                      Row(
-                        children: [
-                          _statChip('${pending.length}', 'New Requests', Icons.notification_important_outlined),
-                          const SizedBox(width: AppTheme.spacingMd),
-                          _statChip('${active.length}', 'Active Jobs', Icons.construction_outlined),
-                          const SizedBox(width: AppTheme.spacingMd),
-                          _statChip('${completed.length}', 'Completed', Icons.check_circle_outline),
-                        ],
-                      ),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                     ],
                   ),
                 ),
@@ -274,11 +202,7 @@ class _TechnicianHomeScreenState extends ConsumerState<TechnicianHomeScreen> {
               if (bookingsState.isLoading)
                 const SliverToBoxAdapter(child: Center(child: Padding(padding: EdgeInsets.all(32), child: CircularProgressIndicator()))),
 
-<<<<<<< HEAD
               const SliverToBoxAdapter(child: SizedBox(height: AppTheme.spacingLg)),
-=======
-              const SliverToBoxAdapter(child: SizedBox(height: 100)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
             ],
           ),
         ),
@@ -458,7 +382,6 @@ class _TechnicianHomeScreenState extends ConsumerState<TechnicianHomeScreen> {
         clipBehavior: Clip.none,
         children: [
           Container(
-<<<<<<< HEAD
             width: 42,
             height: 42,
             decoration: BoxDecoration(
@@ -468,14 +391,6 @@ class _TechnicianHomeScreenState extends ConsumerState<TechnicianHomeScreen> {
               border: Border.all(color: AppTheme.hairline),
             ),
             child: const Icon(Icons.notifications_outlined, color: AppTheme.textPrimary, size: 20),
-=======
-            width: 38, height: 38,
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.2),
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(Icons.notifications_outlined, color: Colors.white, size: 20),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
           ),
           if (unread > 0)
             Positioned(

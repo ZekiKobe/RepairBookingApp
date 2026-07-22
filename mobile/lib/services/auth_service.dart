@@ -1,16 +1,10 @@
 import 'package:dio/dio.dart';
-<<<<<<< HEAD
 import 'package:google_sign_in/google_sign_in.dart';
 import 'api_service.dart';
 import '../models/user_model.dart';
 
 final _googleSignIn = GoogleSignIn(scopes: ['email', 'profile']);
 
-=======
-import 'api_service.dart';
-import '../models/user_model.dart';
-
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 class AuthService {
   final ApiService _api = ApiService();
 
@@ -182,7 +176,6 @@ class AuthService {
     }
   }
 
-<<<<<<< HEAD
   // Google Sign-In
   Future<ApiResponse<UserModel>> googleSignIn({String role = 'user'}) async {
     try {
@@ -223,10 +216,6 @@ class AuthService {
   // Logout
   Future<void> logout() async {
     await _googleSignIn.signOut().catchError((_) {});
-=======
-  // Logout
-  Future<void> logout() async {
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     await _api.clearToken();
   }
 

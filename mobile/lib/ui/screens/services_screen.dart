@@ -4,20 +4,13 @@ import '../../ui/themes/app_theme.dart';
 import '../../providers/services_provider.dart';
 import '../../providers/technicians_provider.dart';
 import '../../providers/auth_provider.dart';
-<<<<<<< HEAD
-=======
-import '../../models/service_model.dart';
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 import '../../models/technician_model.dart';
 import 'category_technicians_screen.dart';
 import 'create_booking_screen.dart';
 import 'chat_screen.dart';
 import 'notifications_screen.dart';
 import '../../providers/notifications_provider.dart';
-<<<<<<< HEAD
 import '../widgets/drawer_opener.dart';
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
 class ServicesScreen extends ConsumerStatefulWidget {
   const ServicesScreen({super.key});
@@ -45,7 +38,6 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
     super.dispose();
   }
 
-<<<<<<< HEAD
   bool _matchesAcCoolingCategory(String n) {
     if (n.contains('hvac')) return true;
     if (n.contains('a/c') || n.contains('a.c')) return true;
@@ -64,15 +56,6 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
     if (n.contains('electr')) return Icons.electrical_services_outlined;
     if (n.contains('clean')) return Icons.cleaning_services_outlined;
     if (_matchesAcCoolingCategory(n)) return Icons.ac_unit_outlined;
-=======
-  // Fallback category icons based on name
-  IconData _iconForCategory(String name) {
-    final n = name.toLowerCase();
-    if (n.contains('plumb')) return Icons.water_damage_outlined;
-    if (n.contains('electr')) return Icons.electrical_services_outlined;
-    if (n.contains('clean')) return Icons.cleaning_services_outlined;
-    if (n.contains('ac') || n.contains('air')) return Icons.ac_unit_outlined;
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     if (n.contains('appl') || n.contains('fridge')) return Icons.kitchen_outlined;
     if (n.contains('carp') || n.contains('wood')) return Icons.handyman_outlined;
     if (n.contains('paint')) return Icons.format_paint_outlined;
@@ -82,26 +65,16 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
 
   List<Color> _colorsForIndex(int index) {
     final palette = [
-<<<<<<< HEAD
       [AppTheme.pastelBlue, AppTheme.primaryLight],
       [AppTheme.pastelOrange, AppTheme.warningLight],
       [AppTheme.pastelGreen, AppTheme.successLight],
       [AppTheme.pastelPurple, AppTheme.primaryColor],
       [AppTheme.pastelYellow, AppTheme.warning],
       [AppTheme.pastelMint, AppTheme.primaryAccent],
-=======
-      [AppTheme.pastelBlue, AppTheme.info],
-      [AppTheme.pastelOrange, AppTheme.primaryAccent],
-      [AppTheme.pastelGreen, AppTheme.success],
-      [AppTheme.pastelPurple, AppTheme.primaryColor],
-      [AppTheme.pastelYellow, AppTheme.warning],
-      [AppTheme.pastelMint, AppTheme.success],
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     ];
     return palette[index % palette.length];
   }
 
-<<<<<<< HEAD
   static const double _categoryTileWidth = 158;
   static const double _categorySliderHeight = 152;
   static const double _categoryCardHeight = 148;
@@ -131,8 +104,6 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
     );
   }
 
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   @override
   Widget build(BuildContext context) {
     final servicesState = ref.watch(servicesProvider);
@@ -143,7 +114,6 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-<<<<<<< HEAD
             // Sticky top bar
             SliverAppBar(
               pinned: true,
@@ -205,52 +175,6 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                       style: Theme.of(context).textTheme.displaySmall?.copyWith(
                             color: AppTheme.textPrimary,
                           ),
-=======
-            // Header
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.all(AppTheme.spacingLg),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: AppTheme.spacingMd,
-                            vertical: AppTheme.spacingSm,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppTheme.surface,
-                            borderRadius: BorderRadius.circular(AppTheme.radiusFull),
-                            boxShadow: AppTheme.shadowSm,
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(Icons.location_on_outlined, color: AppTheme.primaryColor, size: 16),
-                              const SizedBox(width: 4),
-                              Text(
-                                user?.location != null ? 'My Location' : 'Addis Ababa',
-                                style: TextStyle(color: AppTheme.textSecondary, fontSize: 13, fontWeight: FontWeight.w500),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const Spacer(),
-                        _buildBellButton(context, ref),
-                      ],
-                    ),
-                    const SizedBox(height: AppTheme.spacingXl),
-                    Text(
-                      'Hello, ${user?.firstName ?? 'there'}! 👋',
-                      style: TextStyle(color: AppTheme.textSecondary, fontSize: 15),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      'What service do\nyou need?',
-                      style: Theme.of(context).textTheme.displaySmall?.copyWith(fontWeight: FontWeight.bold, height: 1.2),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                     ),
                     const SizedBox(height: AppTheme.spacingLg),
                     Container(
@@ -328,11 +252,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                     padding: const EdgeInsets.fromLTRB(AppTheme.spacingLg, 0, AppTheme.spacingLg, AppTheme.spacingMd),
                     child: Row(
                       children: [
-<<<<<<< HEAD
                         Text('Categories', style: _sectionHeadingStyle(context)),
-=======
-                        Text('Categories', style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                         const SizedBox(width: 8),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
@@ -343,7 +263,6 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                     ),
                   ),
                 ),
-<<<<<<< HEAD
                 SliverToBoxAdapter(
                   child: _buildCategorySlider(
                     itemCount: servicesState.categories.length,
@@ -353,22 +272,6 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                       return SizedBox(
                         width: _categoryTileWidth,
                         child: _buildCategoryCard(
-=======
-                SliverPadding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppTheme.spacingLg),
-                  sliver: SliverGrid(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: AppTheme.spacingMd,
-                      mainAxisSpacing: AppTheme.spacingMd,
-                      childAspectRatio: 1.1,
-                    ),
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) {
-                        final cat = servicesState.categories[index];
-                        final colors = _colorsForIndex(index);
-                        return _buildCategoryCard(
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                           name: cat.name,
                           description: cat.description,
                           icon: _iconForCategory(cat.name),
@@ -378,16 +281,9 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                           onTap: () => Navigator.push(context, MaterialPageRoute(
                             builder: (_) => CategoryTechniciansScreen(categoryName: cat.name, serviceId: cat.id),
                           )),
-<<<<<<< HEAD
                         ),
                       );
                     },
-=======
-                        );
-                      },
-                      childCount: servicesState.categories.length,
-                    ),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                   ),
                 ),
                 const SliverToBoxAdapter(child: SizedBox(height: AppTheme.spacingLg)),
@@ -400,11 +296,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                     padding: const EdgeInsets.fromLTRB(AppTheme.spacingLg, 0, AppTheme.spacingLg, AppTheme.spacingMd),
                     child: Row(
                       children: [
-<<<<<<< HEAD
                         Text('Technicians', style: _sectionHeadingStyle(context)),
-=======
-                        Text('Technicians', style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                         const SizedBox(width: 8),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
@@ -425,11 +317,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                           ...[
                             _buildTechnicianCard(techniciansState.technicians[i], i),
                             if (i < techniciansState.technicians.length - 1)
-<<<<<<< HEAD
                               const Divider(height: 1, thickness: 1, indent: 76, color: AppTheme.hairline),
-=======
-                              const Divider(height: 1, thickness: 1, indent: 76, color: Color(0xFF2C3044)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                           ],
                       ],
                     ),
@@ -443,16 +331,11 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: AppTheme.spacingLg),
-<<<<<<< HEAD
                   child: Text('Categories', style: _sectionHeadingStyle(context)),
-=======
-                  child: Text('Categories', style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                 ),
               ),
               const SliverToBoxAdapter(child: SizedBox(height: AppTheme.spacingMd)),
               if (servicesState.categories.isNotEmpty)
-<<<<<<< HEAD
                 SliverToBoxAdapter(
                   child: _buildCategorySlider(
                     itemCount: servicesState.categories.length,
@@ -462,22 +345,6 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                       return SizedBox(
                         width: _categoryTileWidth,
                         child: _buildCategoryCard(
-=======
-                SliverPadding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppTheme.spacingLg),
-                  sliver: SliverGrid(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: AppTheme.spacingMd,
-                      mainAxisSpacing: AppTheme.spacingMd,
-                      childAspectRatio: 1.1,
-                    ),
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) {
-                        final cat = servicesState.categories[index];
-                        final colors = _colorsForIndex(index);
-                        return _buildCategoryCard(
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                           name: cat.name,
                           description: cat.description,
                           icon: _iconForCategory(cat.name),
@@ -487,7 +354,6 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                           onTap: () => Navigator.push(context, MaterialPageRoute(
                             builder: (_) => CategoryTechniciansScreen(categoryName: cat.name, serviceId: cat.id),
                           )),
-<<<<<<< HEAD
                         ),
                       );
                     },
@@ -523,46 +389,6 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                         ),
                       );
                     },
-=======
-                        );
-                      },
-                      childCount: servicesState.categories.length,
-                    ),
-                  ),
-                )
-              else
-                SliverPadding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppTheme.spacingLg),
-                  sliver: SliverGrid(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: AppTheme.spacingMd,
-                      mainAxisSpacing: AppTheme.spacingMd,
-                      childAspectRatio: 1.1,
-                    ),
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) {
-                        final fallbacks = [
-                          ('Plumbing', 'Leaks, pipes', Icons.water_damage_outlined),
-                          ('Electrical', 'Wiring, outlets', Icons.electrical_services_outlined),
-                          ('Cleaning', 'Deep clean', Icons.cleaning_services_outlined),
-                          ('AC Repair', 'Installation', Icons.ac_unit_outlined),
-                          ('Appliances', 'Fridge, washer', Icons.kitchen_outlined),
-                          ('Carpentry', 'Furniture, doors', Icons.handyman_outlined),
-                        ];
-                        final f = fallbacks[index];
-                        final colors = _colorsForIndex(index);
-                        return _buildCategoryCard(
-                          name: f.$1, description: f.$2, icon: f.$3,
-                          bgColor: colors[0], iconColor: colors[1], count: 0,
-                          onTap: () => Navigator.push(context, MaterialPageRoute(
-                            builder: (_) => CategoryTechniciansScreen(categoryName: f.$1),
-                          )),
-                        );
-                      },
-                      childCount: 6,
-                    ),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                   ),
                 ),
 
@@ -572,11 +398,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: AppTheme.spacingLg),
-<<<<<<< HEAD
                   child: Text('Top Technicians', style: _sectionHeadingStyle(context)),
-=======
-                  child: Text('Top Technicians', style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                 ),
               ),
               const SliverToBoxAdapter(child: SizedBox(height: AppTheme.spacingMd)),
@@ -610,11 +432,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                             ...[  
                               _buildTechnicianCard(techniciansState.technicians[i], i),
                               if (i < count - 1)
-<<<<<<< HEAD
                                 const Divider(height: 1, thickness: 1, indent: 76, color: AppTheme.hairline),
-=======
-                                const Divider(height: 1, thickness: 1, indent: 76, color: Color(0xFF2C3044)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                             ],
                         ],
                       ),
@@ -623,11 +441,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                 ),
             ],
 
-<<<<<<< HEAD
             const SliverToBoxAdapter(child: SizedBox(height: AppTheme.spacingLg)),
-=======
-            const SliverToBoxAdapter(child: SizedBox(height: 100)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
           ],
         ),
       ),
@@ -643,7 +457,6 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
     required int count,
     VoidCallback? onTap,
   }) {
-<<<<<<< HEAD
     final radius = AppTheme.radiusLg;
     return SoftCard(
       onTap: onTap,
@@ -744,34 +557,12 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
                 ],
               ),
             ),
-=======
-    return SoftCard(
-      onTap: onTap,
-      padding: const EdgeInsets.all(AppTheme.spacingMd),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            width: 56, height: 56,
-            decoration: BoxDecoration(color: bgColor, borderRadius: BorderRadius.circular(AppTheme.radiusMd)),
-            child: Icon(icon, color: iconColor, size: 28),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(name, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: AppTheme.textPrimary)),
-              const SizedBox(height: 4),
-              Text(description, style: TextStyle(fontSize: 12, color: AppTheme.textTertiary), maxLines: 1, overflow: TextOverflow.ellipsis),
-            ],
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
           ),
         ],
       ),
     );
   }
 
-<<<<<<< HEAD
   /// Circular avatar: technician's linked user profile photo when available.
   Widget _technicianAvatar(TechnicianModel tech, List<Color> colors) {
     final url = tech.user?.avatar?.trim();
@@ -809,8 +600,6 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
     );
   }
 
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   Widget _buildTechnicianCard(TechnicianModel tech, int index) {
     final colors = _colorsForIndex(index);
     final name = tech.fullName;
@@ -820,29 +609,12 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-<<<<<<< HEAD
         onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => CreateBookingScreen(technician: tech))),
-=======
-        onTap: () {},
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
         child: Padding(
           padding: const EdgeInsets.all(AppTheme.spacingMd),
           child: Row(
         children: [
-<<<<<<< HEAD
           _technicianAvatar(tech, colors),
-=======
-          Container(
-            width: 56, height: 56,
-            decoration: BoxDecoration(color: colors[0], borderRadius: BorderRadius.circular(AppTheme.radiusMd)),
-            child: Center(
-              child: Text(
-                tech.initials,
-                style: TextStyle(color: colors[1], fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
           const SizedBox(width: AppTheme.spacingMd),
           Expanded(
             child: Column(
@@ -868,11 +640,7 @@ class _ServicesScreenState extends ConsumerState<ServicesScreen> {
             children: [
               GestureDetector(
                 onTap: () {
-<<<<<<< HEAD
                   final userId = tech.user?.id ?? tech.userId;
-=======
-                  final userId = tech.user?.id ?? tech.userId ?? '';
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                   if (userId.isEmpty) return;
                   Navigator.push(context, MaterialPageRoute(
                     builder: (_) => ChatScreen(

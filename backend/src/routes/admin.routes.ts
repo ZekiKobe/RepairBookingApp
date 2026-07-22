@@ -3,7 +3,6 @@ import {
   getDashboardStats,
   getAllUsersAdmin,
   toggleUserStatus,
-<<<<<<< HEAD
   getAuditLogs,
 } from '../controllers/admin.controller';
 import {
@@ -46,18 +45,5 @@ router.delete('/notification-templates/:id', authorizePermission(PERMISSIONS.NOT
 router.post('/notifications/broadcast', authorizePermission(PERMISSIONS.NOTIFICATIONS_WRITE), broadcastNotification);
 
 router.get('/technicians/suggestions', authorizePermission(PERMISSIONS.BOOKINGS_READ), getTechnicianSuggestions);
-=======
-} from '../controllers/admin.controller';
-import { authenticate, authorize } from '../middleware/auth';
-
-const router = Router();
-
-// All admin routes require authentication and admin role
-router.use(authenticate, authorize('admin'));
-
-router.get('/dashboard', getDashboardStats);
-router.get('/users', getAllUsersAdmin);
-router.put('/users/:id/toggle', toggleUserStatus);
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
 export default router;

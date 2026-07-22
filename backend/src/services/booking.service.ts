@@ -201,11 +201,7 @@ export const acceptBooking = async (
 
 export const cancelBooking = async (
   bookingId: string,
-<<<<<<< HEAD
   cancelledBy: 'user' | 'technician' | 'admin',
-=======
-  cancelledBy: 'user' | 'technician',
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   reason?: string
 ): Promise<IBooking> => {
   const booking = await Booking.findById(bookingId);
@@ -269,7 +265,6 @@ export const getBookingStatistics = async (technicianId?: string): Promise<any> 
     totalEarnings: 0,
   };
 };
-<<<<<<< HEAD
 
 export interface AdminBookingListQuery {
   status?: BookingStatus;
@@ -359,5 +354,3 @@ export const assignBookingTechnician = async (
     { path: 'service' },
   ]);
 };
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739

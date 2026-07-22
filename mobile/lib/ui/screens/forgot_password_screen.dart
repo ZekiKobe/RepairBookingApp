@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../services/auth_service.dart';
 import '../../ui/themes/app_theme.dart';
-<<<<<<< HEAD
 import '../widgets/auth_hero_header.dart';
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -111,7 +108,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     }
   }
 
-<<<<<<< HEAD
   IconData _heroIcon() {
     switch (_step) {
       case 0:
@@ -148,50 +144,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       return 'Enter the 6-digit code sent to\n${_phoneCtrl.text.trim()}';
     }
     return base[_step];
-=======
-  // ── Shared header ──────────────────────────────────────────────────────────
-  Widget _buildHeader() {
-    final titles = ['Forgot Password', 'Enter OTP', 'New Password'];
-    final subtitles = [
-      'Enter your registered phone number to receive a verification code.',
-      'Enter the 6-digit code sent to\n${_phoneCtrl.text.trim()}',
-      'Choose a strong password for your account.',
-    ];
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // Progress dots
-        Row(
-          children: List.generate(3, (i) => AnimatedContainer(
-            duration: const Duration(milliseconds: 300),
-            margin: const EdgeInsets.only(right: 6),
-            width: _step == i ? 24 : 8,
-            height: 8,
-            decoration: BoxDecoration(
-              color: _step >= i ? AppTheme.primaryColor : AppTheme.surfaceLighter,
-              borderRadius: BorderRadius.circular(AppTheme.radiusFull),
-            ),
-          )),
-        ),
-        const SizedBox(height: AppTheme.spacingLg),
-        // Icon
-        Container(
-          width: 56, height: 56,
-          decoration: BoxDecoration(
-            gradient: const LinearGradient(colors: AppTheme.primaryGradient, begin: Alignment.topLeft, end: Alignment.bottomRight),
-            borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-            boxShadow: [BoxShadow(color: AppTheme.primaryColor.withOpacity(0.35), blurRadius: 16, offset: const Offset(0, 6))],
-          ),
-          child: Icon(_step == 0 ? Icons.lock_reset_outlined : _step == 1 ? Icons.sms_outlined : Icons.lock_outline_rounded,
-              color: Colors.white, size: 28),
-        ),
-        const SizedBox(height: AppTheme.spacingMd),
-        Text(titles[_step], style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w800, color: AppTheme.textPrimary)),
-        const SizedBox(height: 6),
-        Text(subtitles[_step], style: const TextStyle(fontSize: 14, color: AppTheme.textSecondary, height: 1.5)),
-      ],
-    );
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   }
 
   // ── Error banner ───────────────────────────────────────────────────────────
@@ -267,19 +219,14 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: List.generate(6, (i) => SizedBox(
-<<<<<<< HEAD
             width: 54,
             height: 62,
-=======
-            width: 46,
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
             child: TextFormField(
               controller: _otpCtrls[i],
               focusNode: _otpFoci[i],
               textAlign: TextAlign.center,
               keyboardType: TextInputType.number,
               maxLength: 1,
-<<<<<<< HEAD
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: AppTheme.textPrimary),
               decoration: InputDecoration(
                 counterText: '',
@@ -288,15 +235,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 fillColor: AppTheme.surfaceLight,
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(AppTheme.radiusMd), borderSide: const BorderSide(color: AppTheme.hairline)),
                 enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(AppTheme.radiusMd), borderSide: const BorderSide(color: AppTheme.hairline)),
-=======
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w700, color: AppTheme.textPrimary),
-              decoration: InputDecoration(
-                counterText: '',
-                filled: true,
-                fillColor: AppTheme.surfaceLight,
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(AppTheme.radiusMd), borderSide: const BorderSide(color: Color(0xFF2C3044))),
-                enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(AppTheme.radiusMd), borderSide: const BorderSide(color: Color(0xFF2C3044))),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                 focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(AppTheme.radiusMd), borderSide: const BorderSide(color: AppTheme.primaryColor, width: 2)),
               ),
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -385,13 +323,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       suffixIcon: suffix,
       filled: true,
       fillColor: AppTheme.surfaceLight,
-<<<<<<< HEAD
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(AppTheme.radiusMd), borderSide: const BorderSide(color: AppTheme.hairline)),
       enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(AppTheme.radiusMd), borderSide: const BorderSide(color: AppTheme.hairline)),
-=======
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(AppTheme.radiusMd), borderSide: const BorderSide(color: Color(0xFF2C3044))),
-      enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(AppTheme.radiusMd), borderSide: const BorderSide(color: Color(0xFF2C3044))),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(AppTheme.radiusMd), borderSide: const BorderSide(color: AppTheme.primaryColor, width: 1.5)),
       errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(AppTheme.radiusMd), borderSide: const BorderSide(color: AppTheme.error)),
       focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(AppTheme.radiusMd), borderSide: const BorderSide(color: AppTheme.error, width: 1.5)),
@@ -424,7 +357,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     final steps = [_buildPhoneStep, _buildOtpStep, _buildNewPasswordStep];
-<<<<<<< HEAD
     const titles = ['Forgot Password', 'Enter OTP', 'New Password'];
 
     return Scaffold(
@@ -469,47 +401,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             ),
           ),
         ],
-=======
-
-    return Scaffold(
-      backgroundColor: AppTheme.background,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(AppTheme.spacingLg),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 16),
-              // Back button
-              GestureDetector(
-                onTap: () {
-                  if (_step > 0) {
-                    setState(() { _step--; _error = null; });
-                  } else {
-                    Navigator.pop(context);
-                  }
-                },
-                child: Container(
-                  width: 44, height: 44,
-                  decoration: BoxDecoration(color: AppTheme.surface, borderRadius: BorderRadius.circular(AppTheme.radiusMd), boxShadow: AppTheme.shadowSm),
-                  child: const Icon(Icons.arrow_back_rounded, color: AppTheme.textPrimary, size: 20),
-                ),
-              ),
-              const SizedBox(height: 32),
-              _buildHeader(),
-              const SizedBox(height: AppTheme.spacingXl),
-              _buildError(),
-              AnimatedSwitcher(
-                duration: const Duration(milliseconds: 250),
-                child: KeyedSubtree(
-                  key: ValueKey(_step),
-                  child: steps[_step](),
-                ),
-              ),
-            ],
-          ),
-        ),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       ),
     );
   }

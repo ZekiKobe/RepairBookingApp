@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,33 +23,11 @@ void main() async {
 
   await ApiService().init();
 
-=======
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'ui/themes/app_theme.dart';
-import 'ui/screens/splash_screen.dart';
-import 'services/api_service.dart';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  
-  // Initialize API service
-  await ApiService().init();
-  
-  // Set preferred orientations
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-<<<<<<< HEAD
 
-=======
-  
-  // Set system UI overlay style for light theme
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -59,11 +36,7 @@ void main() async {
       systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   runApp(
     const ProviderScope(
       child: RepairBookingApp(),
@@ -71,7 +44,6 @@ void main() async {
   );
 }
 
-<<<<<<< HEAD
 class RepairBookingApp extends ConsumerWidget {
   const RepairBookingApp({super.key});
 
@@ -95,18 +67,6 @@ class RepairBookingApp extends ConsumerWidget {
           child: child ?? const SizedBox.shrink(),
         );
       },
-=======
-class RepairBookingApp extends StatelessWidget {
-  const RepairBookingApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Repair Booking',
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      home: const SplashScreen(),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     );
   }
 }

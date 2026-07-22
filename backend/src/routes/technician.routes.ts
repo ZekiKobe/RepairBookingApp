@@ -10,16 +10,12 @@ import {
   getTechnician,
   approveTechnicianProfile,
   listPendingTechnicians,
-<<<<<<< HEAD
   setTechnicianSuspended,
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 } from '../controllers/technician.controller';
 import { authenticate, authorize } from '../middleware/auth';
 
 const router = Router();
 
-<<<<<<< HEAD
 // Static paths must be registered before `/:id` to avoid shadowing
 router.get('/profile/me', authenticate, authorize('technician'), getMyTechnicianProfile);
 router.get('/pending', authenticate, authorize('admin'), listPendingTechnicians);
@@ -30,15 +26,6 @@ router.get('/', listTechnicians);
 router.get('/:id', getTechnician);
 
 // Protected routes (technician only)
-=======
-// Public routes
-router.get('/', listTechnicians);
-router.get('/pending', listPendingTechnicians);
-router.get('/:id', getTechnician);
-
-// Protected routes (technician only)
-router.get('/profile/me', authenticate, authorize('technician'), getMyTechnicianProfile);
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 router.post('/profile', authenticate, createProfile);
 router.put('/:id', authenticate, authorize('technician', 'admin'), updateProfile);
 router.post('/:id/services', authenticate, authorize('technician'), addService);

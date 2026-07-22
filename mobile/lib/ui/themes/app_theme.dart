@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-<<<<<<< HEAD
 import 'package:google_fonts/google_fonts.dart';
 
 /// Editorial “repair studio” — warm paper surfaces, deep blue-slate accent (professional service brand).
@@ -64,73 +63,6 @@ class AppTheme {
   static const Color statusActive = Color(0xFF6B9B7E);
   static const Color statusCompleted = Color(0xFF1E4D6B);
   static const Color statusCancelled = Color(0xFFD17B6B);
-=======
-
-/// Dark Theme Design System
-/// Blue and Orange professional theme
-class AppTheme {
-  // ═══════════════════════════════════════════════════════════════════════════
-  // COLOR PALETTE - Dark Mode
-  // ═══════════════════════════════════════════════════════════════════════════
-  
-  // Primary Colors
-  static const Color primaryColor = Color(0xFF7C6FFF); // Indigo-purple for dark bg
-  static const Color primaryLight = Color(0xFF9E94FF);
-  static const Color primaryDark = Color(0xFF4F46E5);
-  static const Color primaryAccent = Color(0xFFFF6B35); // Orange accent
-  
-  // Background Colors - Dark
-  static const Color background = Color(0xFF0F1117); // Near black
-  static const Color backgroundWhite = Color(0xFF1A1D26); // Dark surface
-  static const Color surface = Color(0xFF1E2130); // Card surface
-  static const Color surfaceLight = Color(0xFF252837); // Slightly lighter
-  static const Color surfaceLighter = Color(0xFF2C3044); // Input fill
-  
-  // Text Colors - Light on dark background
-  static const Color textPrimary = Color(0xFFF1F5F9); // Near white
-  static const Color textSecondary = Color(0xFF94A3B8); // Muted blue-gray
-  static const Color textTertiary = Color(0xFF64748B); // Dim gray
-  static const Color textMuted = Color(0xFF374151); // Very dim
-  
-  // Soft Accent Colors
-  static const Color success = Color(0xFF10B981);
-  static const Color successLight = Color(0xFF6EE7B7);
-  static const Color successBg = Color(0xFF064E3B);
-  static const Color warning = Color(0xFFF59E0B);
-  static const Color warningLight = Color(0xFFFCD34D);
-  static const Color warningBg = Color(0xFF78350F);
-  static const Color error = Color(0xFFEF4444);
-  static const Color errorLight = Color(0xFFFCA5A5);
-  static const Color errorBg = Color(0xFF7F1D1D);
-  static const Color info = Color(0xFF3B82F6);
-  static const Color infoLight = Color(0xFF93C5FD);
-  static const Color infoBg = Color(0xFF1E3A5F);
-  
-  // Category Colors - Dark Pastels
-  static const Color pastelPink = Color(0xFF3D1F24);
-  static const Color pastelBlue = Color(0xFF1E2F4A);
-  static const Color pastelGreen = Color(0xFF1A3328);
-  static const Color pastelYellow = Color(0xFF3D2E0A);
-  static const Color pastelPurple = Color(0xFF2A2450);
-  static const Color pastelOrange = Color(0xFF3D2510);
-  static const Color pastelMint = Color(0xFF0F302B);
-  static const Color pastelLavender = Color(0xFF2A2450);
-  
-  // Gradient Colors
-  static const List<Color> primaryGradient = [Color(0xFF7C6FFF), Color(0xFF4F46E5)];
-  static const List<Color> accentGradient = [Color(0xFFFF6B35), Color(0xFFEA4C1E)];
-  static const List<Color> successGradient = [Color(0xFF6EE7B7), Color(0xFF10B981)];
-  static const List<Color> warningGradient = [Color(0xFFFCD34D), Color(0xFFF59E0B)];
-  static const List<Color> errorGradient = [Color(0xFFFCA5A5), Color(0xFFEF4444)];
-  static const List<Color> backgroundGradient = [Color(0xFF0F1117), Color(0xFF1A1D26)];
-  
-  // Status Colors
-  static const Color statusPending = Color(0xFFF59E0B);
-  static const Color statusAccepted = Color(0xFF3B82F6);
-  static const Color statusActive = Color(0xFF10B981);
-  static const Color statusCompleted = Color(0xFF6366F1);
-  static const Color statusCancelled = Color(0xFFEF4444);
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
   // ═══════════════════════════════════════════════════════════════════════════
   // SPACING - Clean Scale
@@ -160,7 +92,6 @@ class AppTheme {
   // ═══════════════════════════════════════════════════════════════════════════
   static List<BoxShadow> get shadowSm => [
     BoxShadow(
-<<<<<<< HEAD
       color: const Color(0x12000000),
       blurRadius: 10,
       offset: const Offset(0, 2),
@@ -178,25 +109,6 @@ class AppTheme {
   static List<BoxShadow> get shadowLg => [
     BoxShadow(
       color: const Color(0x1A000000),
-=======
-      color: const Color(0x40000000),
-      blurRadius: 6,
-      offset: const Offset(0, 2),
-    ),
-  ];
-  
-  static List<BoxShadow> get shadowMd => [
-    BoxShadow(
-      color: const Color(0x50000000),
-      blurRadius: 14,
-      offset: const Offset(0, 4),
-    ),
-  ];
-  
-  static List<BoxShadow> get shadowLg => [
-    BoxShadow(
-      color: const Color(0x60000000),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       blurRadius: 28,
       offset: const Offset(0, 8),
     ),
@@ -214,11 +126,7 @@ class AppTheme {
   static BoxDecoration get cardWithBorder => BoxDecoration(
     color: surface,
     borderRadius: BorderRadius.circular(radiusLg),
-<<<<<<< HEAD
     border: Border.all(color: hairline, width: 1),
-=======
-    border: Border.all(color: const Color(0xFF2C3044), width: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     boxShadow: shadowSm,
   );
   
@@ -246,7 +154,6 @@ class AppTheme {
   static const Curve curveSpring = Curves.easeOutBack;
 
   // ═══════════════════════════════════════════════════════════════════════════
-<<<<<<< HEAD
   // THEME DATA — editorial typography (Fraunces display + DM Sans UI)
   // ═══════════════════════════════════════════════════════════════════════════
 
@@ -372,48 +279,16 @@ class AppTheme {
     ),
 
     appBarTheme: AppBarTheme(
-=======
-  // THEME DATA - Dark Theme
-  // ═══════════════════════════════════════════════════════════════════════════
-  static ThemeData get lightTheme => ThemeData(
-    useMaterial3: true,
-    brightness: Brightness.dark,
-    scaffoldBackgroundColor: background,
-    primaryColor: primaryColor,
-    colorScheme: const ColorScheme.dark(
-      primary: primaryColor,
-      secondary: primaryAccent,
-      surface: surface,
-      surfaceContainerHighest: surfaceLight,
-      onSurface: textPrimary,
-      onSurfaceVariant: textSecondary,
-      error: error,
-      onError: Colors.white,
-      outline: Color(0xFF2C3044),
-    ),
-    
-    // AppBar Theme - Dark
-    appBarTheme: const AppBarTheme(
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       backgroundColor: background,
       foregroundColor: textPrimary,
       elevation: 0,
       centerTitle: true,
-<<<<<<< HEAD
       systemOverlayStyle: SystemUiOverlayStyle.dark,
       titleTextStyle: GoogleFonts.dmSans(
         fontSize: 18,
         fontWeight: FontWeight.w600,
         color: textPrimary,
         letterSpacing: -0.2,
-=======
-      systemOverlayStyle: SystemUiOverlayStyle.light,
-      titleTextStyle: TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.w600,
-        color: textPrimary,
-        letterSpacing: -0.3,
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       ),
     ),
     
@@ -439,7 +314,6 @@ class AppTheme {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radiusFull),
         ),
-<<<<<<< HEAD
         textStyle: GoogleFonts.dmSans(
           fontSize: 16,
           fontWeight: FontWeight.w600,
@@ -452,21 +326,6 @@ class AppTheme {
       style: OutlinedButton.styleFrom(
         foregroundColor: textPrimary,
         side: const BorderSide(color: hairline, width: 1.5),
-=======
-        textStyle: const TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-          letterSpacing: 0.2,
-        ),
-      ),
-    ),
-    
-    // Outlined Button Theme
-    outlinedButtonTheme: OutlinedButtonThemeData(
-      style: OutlinedButton.styleFrom(
-        foregroundColor: textPrimary,
-        side: const BorderSide(color: Color(0xFFE5E7EB), width: 1.5),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
         padding: const EdgeInsets.symmetric(
           horizontal: spacingLg,
           vertical: spacingMd,
@@ -474,7 +333,6 @@ class AppTheme {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radiusFull),
         ),
-<<<<<<< HEAD
         textStyle: GoogleFonts.dmSans(
           fontSize: 16,
           fontWeight: FontWeight.w600,
@@ -483,35 +341,16 @@ class AppTheme {
       ),
     ),
 
-=======
-        textStyle: const TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-          letterSpacing: 0.2,
-        ),
-      ),
-    ),
-    
-    // Input Decoration Theme - Dark
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: surfaceLighter,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(radiusMd),
-<<<<<<< HEAD
         borderSide: const BorderSide(color: hairline, width: 1),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(radiusMd),
         borderSide: const BorderSide(color: hairline, width: 1),
-=======
-        borderSide: const BorderSide(color: Color(0xFF2C3044), width: 1),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(radiusMd),
-        borderSide: const BorderSide(color: Color(0xFF2C3044), width: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(radiusMd),
@@ -535,7 +374,6 @@ class AppTheme {
       prefixIconColor: textTertiary,
       suffixIconColor: textTertiary,
     ),
-<<<<<<< HEAD
 
     textTheme: editorialTextTheme,
 
@@ -545,130 +383,10 @@ class AppTheme {
     ),
 
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-=======
-    
-    // Text Theme - Clean typography
-    textTheme: const TextTheme(
-      displayLarge: TextStyle(
-        fontSize: 36,
-        fontWeight: FontWeight.bold,
-        color: textPrimary,
-        letterSpacing: -0.5,
-        height: 1.2,
-      ),
-      displayMedium: TextStyle(
-        fontSize: 28,
-        fontWeight: FontWeight.bold,
-        color: textPrimary,
-        letterSpacing: -0.5,
-        height: 1.2,
-      ),
-      displaySmall: TextStyle(
-        fontSize: 24,
-        fontWeight: FontWeight.bold,
-        color: textPrimary,
-        letterSpacing: -0.3,
-        height: 1.3,
-      ),
-      headlineLarge: TextStyle(
-        fontSize: 22,
-        fontWeight: FontWeight.w700,
-        color: textPrimary,
-        letterSpacing: -0.3,
-        height: 1.3,
-      ),
-      headlineMedium: TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.w600,
-        color: textPrimary,
-        letterSpacing: -0.2,
-        height: 1.4,
-      ),
-      headlineSmall: TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.w600,
-        color: textPrimary,
-        letterSpacing: -0.1,
-        height: 1.4,
-      ),
-      titleLarge: TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.w600,
-        color: textPrimary,
-        height: 1.4,
-      ),
-      titleMedium: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-        color: textPrimary,
-        letterSpacing: 0.1,
-        height: 1.5,
-      ),
-      titleSmall: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        color: textSecondary,
-        letterSpacing: 0.1,
-        height: 1.5,
-      ),
-      bodyLarge: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
-        color: textPrimary,
-        letterSpacing: 0,
-        height: 1.6,
-      ),
-      bodyMedium: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w400,
-        color: textSecondary,
-        letterSpacing: 0,
-        height: 1.6,
-      ),
-      bodySmall: TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w400,
-        color: textTertiary,
-        letterSpacing: 0,
-        height: 1.5,
-      ),
-      labelLarge: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w600,
-        color: primaryColor,
-        letterSpacing: 0.1,
-        height: 1.4,
-      ),
-      labelMedium: TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w600,
-        color: textSecondary,
-        letterSpacing: 0.1,
-        height: 1.4,
-      ),
-      labelSmall: TextStyle(
-        fontSize: 11,
-        fontWeight: FontWeight.w600,
-        color: textTertiary,
-        letterSpacing: 0.2,
-        height: 1.4,
-      ),
-    ),
-    
-    // Divider Theme
-    dividerTheme: const DividerThemeData(
-      color: Color(0xFF2C3044),
-      thickness: 1,
-    ),
-    
-    // Bottom Navigation Bar Theme
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       backgroundColor: surface,
       selectedItemColor: primaryColor,
       unselectedItemColor: textTertiary,
       type: BottomNavigationBarType.fixed,
-<<<<<<< HEAD
       elevation: 0,
       showSelectedLabels: true,
       showUnselectedLabels: true,
@@ -821,16 +539,6 @@ class AppTheme {
         fontWeight: FontWeight.w600,
       ),
       unselectedLabelStyle: GoogleFonts.dmSans(
-=======
-      elevation: 8,
-      showSelectedLabels: true,
-      showUnselectedLabels: true,
-      selectedLabelStyle: TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w600,
-      ),
-      unselectedLabelStyle: TextStyle(
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
         fontSize: 12,
         fontWeight: FontWeight.w500,
       ),
@@ -838,12 +546,6 @@ class AppTheme {
   );
 }
 
-<<<<<<< HEAD
-=======
-// ═══════════════════════════════════════════════════════════════════════════
-// SOFT GRADIENT BUTTON WIDGET
-// ═══════════════════════════════════════════════════════════════════════════
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 class SoftGradientButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
@@ -875,15 +577,9 @@ class SoftGradientButton extends StatelessWidget {
         height: height,
         decoration: isOutlined
           ? BoxDecoration(
-<<<<<<< HEAD
               color: AppTheme.surface,
               borderRadius: BorderRadius.circular(AppTheme.radiusFull),
               border: Border.all(color: AppTheme.hairline, width: 1.5),
-=======
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(AppTheme.radiusFull),
-              border: Border.all(color: const Color(0xFFE5E7EB), width: 1.5),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
             )
           : BoxDecoration(
               gradient: LinearGradient(

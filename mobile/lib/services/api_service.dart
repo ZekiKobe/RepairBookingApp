@@ -13,16 +13,12 @@ class ApiService {
   // For Android emulator: http://10.0.2.2:5000/api
   // For iOS simulator: http://localhost:5000/api
   // For physical device: use your computer's LAN IP address
-<<<<<<< HEAD
   // static const String baseUrl = 'http://172.16.238.225:5000/api';
   static const String baseUrl = 'http://localhost:5000/api';
 
   /// Socket.IO server origin (strip trailing `/api`).
   static String get socketOrigin =>
       baseUrl.replaceFirst(RegExp(r'/api/?$'), '');
-=======
-  static const String baseUrl = 'http://172.16.238.225:5000/api';
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
   Dio get dio => _dio;
 

@@ -281,11 +281,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
                           decoration: BoxDecoration(
                             color: selected ? AppTheme.primaryColor : AppTheme.surfaceLight,
                             borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-<<<<<<< HEAD
                             border: Border.all(color: selected ? AppTheme.primaryColor : AppTheme.hairline),
-=======
-                            border: Border.all(color: selected ? AppTheme.primaryColor : const Color(0xFF2C3044)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                           ),
                           child: Column(
                             children: [
@@ -705,19 +701,11 @@ Widget _sheetField({
       fillColor: AppTheme.surfaceLight,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-<<<<<<< HEAD
         borderSide: const BorderSide(color: AppTheme.hairline),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppTheme.radiusMd),
         borderSide: const BorderSide(color: AppTheme.hairline),
-=======
-        borderSide: const BorderSide(color: Color(0xFF2C3044)),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-        borderSide: const BorderSide(color: Color(0xFF2C3044)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(AppTheme.radiusMd),

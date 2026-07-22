@@ -4,12 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../ui/themes/app_theme.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/messages_provider.dart';
-<<<<<<< HEAD
 import '../../providers/notifications_provider.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/drawer_opener.dart';
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 import 'services_screen.dart';
 import 'bookings_screen.dart';
 import 'messages_screen.dart';
@@ -27,10 +24,7 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   int _currentIndex = 0;
   Timer? _unreadTimer;
-<<<<<<< HEAD
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
   // Customer screens
   final List<Widget> _customerScreens = [
@@ -65,18 +59,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   void initState() {
     super.initState();
-<<<<<<< HEAD
     // Load conversations, notifications + unread counts on startup
     Future.microtask(() {
       ref.read(messagesProvider.notifier).loadConversations();
       ref.read(messagesProvider.notifier).loadUnreadCount();
       ref.read(notificationsProvider.notifier).loadUnreadCount();
-=======
-    // Load conversations + unread count on startup
-    Future.microtask(() {
-      ref.read(messagesProvider.notifier).loadConversations();
-      ref.read(messagesProvider.notifier).loadUnreadCount();
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     });
     // Refresh unread counts every 15 seconds
     _unreadTimer = Timer.periodic(const Duration(seconds: 15), (_) {
@@ -102,7 +89,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final unreadMessages = ref.watch(messagesProvider).unreadCount;
 
     return Scaffold(
-<<<<<<< HEAD
       key: _scaffoldKey,
       backgroundColor: AppTheme.background,
       drawer: AppDrawer(
@@ -133,40 +119,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               navItems.length,
               (index) => Expanded(child: _buildNavItem(index, navItems, unreadMessages)),
             ),
-=======
-      backgroundColor: AppTheme.background,
-      body: Stack(
-        children: [
-          screens[safeIndex],
-          Positioned(
-            left: 8,
-            right: 8,
-            bottom: AppTheme.spacingMd,
-            child: _buildFloatingNavBar(navItems, unreadMessages),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildFloatingNavBar(List<NavigationItem> navItems, int unreadMessages) {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppTheme.spacingSm,
-        vertical: AppTheme.spacingSm,
-      ),
-      decoration: BoxDecoration(
-        color: const Color(0xFF1A1D2E),
-        borderRadius: BorderRadius.circular(AppTheme.radius2xl),
-        boxShadow: AppTheme.shadowLg,
-      ),
-      child: SafeArea(
-        top: false,
-        child: Row(
-          children: List.generate(
-            navItems.length,
-            (index) => Expanded(child: _buildNavItem(index, navItems, unreadMessages)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
           ),
         ),
       ),
@@ -185,7 +137,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ref.read(messagesProvider.notifier).loadUnreadCount();
         }
       },
-<<<<<<< HEAD
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 4),
         child: AnimatedContainer(
@@ -231,55 +182,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ],
           ),
-=======
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppTheme.spacingSm,
-          vertical: AppTheme.spacingSm,
-        ),
-        decoration: BoxDecoration(
-          gradient: isSelected ? const LinearGradient(
-            colors: [Color(0xFF7C6FFF), Color(0xFF4F46E5)],
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-          ) : null,
-          color: isSelected ? null : Colors.transparent,
-          borderRadius: BorderRadius.circular(AppTheme.radiusFull),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Icon(
-                  isSelected ? item.activeIcon : item.icon,
-                  color: Colors.white.withOpacity(isSelected ? 1.0 : 0.6),
-                  size: 20,
-                ),
-                if (isMessages && unreadMessages > 0)
-                  _badge(unreadMessages),
-              ],
-            ),
-            if (isSelected) ...[
-              const SizedBox(width: 6),
-              Flexible(
-                child: Text(
-                  item.label,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                ),
-              ),
-            ],
-          ],
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
         ),
       ),
     );

@@ -23,11 +23,7 @@ export interface IBooking extends Document {
   paymentIntentId?: string;
   notes?: string;
   cancellationReason?: string;
-<<<<<<< HEAD
   cancelledBy?: 'user' | 'technician' | 'admin';
-=======
-  cancelledBy?: 'user' | 'technician';
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   completedAt?: Date;
   createdAt: Date;
   updatedAt: Date;
@@ -109,11 +105,7 @@ const BookingSchema: Schema = new Schema({
   },
   cancelledBy: {
     type: String,
-<<<<<<< HEAD
     enum: ['user', 'technician', 'admin'],
-=======
-    enum: ['user', 'technician'],
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   },
   completedAt: {
     type: Date,

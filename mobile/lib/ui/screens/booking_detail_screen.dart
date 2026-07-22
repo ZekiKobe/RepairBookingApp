@@ -188,13 +188,8 @@ class _BookingDetailScreenState extends ConsumerState<BookingDetailScreen> {
                     hintStyle: const TextStyle(color: AppTheme.textTertiary, fontSize: 13),
                     filled: true,
                     fillColor: AppTheme.surfaceLight,
-<<<<<<< HEAD
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(AppTheme.radiusMd), borderSide: const BorderSide(color: AppTheme.hairline)),
                     enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(AppTheme.radiusMd), borderSide: const BorderSide(color: AppTheme.hairline)),
-=======
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(AppTheme.radiusMd), borderSide: const BorderSide(color: Color(0xFF2C3044))),
-                    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(AppTheme.radiusMd), borderSide: const BorderSide(color: Color(0xFF2C3044))),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                     focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(AppTheme.radiusMd), borderSide: const BorderSide(color: AppTheme.primaryColor, width: 1.5)),
                     contentPadding: const EdgeInsets.all(12),
                   ),
@@ -349,11 +344,7 @@ class _BookingDetailScreenState extends ConsumerState<BookingDetailScreen> {
                       decoration: BoxDecoration(
                         color: AppTheme.surface,
                         borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-<<<<<<< HEAD
                         border: Border.all(color: AppTheme.hairline, width: 1),
-=======
-                        border: Border.all(color: const Color(0xFF2C3044), width: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                       ),
                       child: const Icon(Icons.arrow_back_rounded, size: 20, color: AppTheme.textPrimary),
                     ),
@@ -365,11 +356,7 @@ class _BookingDetailScreenState extends ConsumerState<BookingDetailScreen> {
               ),
             ),
             const SizedBox(height: AppTheme.spacingMd),
-<<<<<<< HEAD
             const Divider(color: AppTheme.hairline, height: 1),
-=======
-            const Divider(color: Color(0xFF2C3044), height: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
             Expanded(
               child: ListView(
@@ -522,11 +509,7 @@ class _BookingDetailScreenState extends ConsumerState<BookingDetailScreen> {
       decoration: BoxDecoration(
         color: AppTheme.surface,
         borderRadius: BorderRadius.circular(AppTheme.radiusLg),
-<<<<<<< HEAD
         border: Border.all(color: AppTheme.hairline, width: 1),
-=======
-        border: Border.all(color: const Color(0xFF2C3044), width: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       ),
       child: Padding(
         padding: const EdgeInsets.all(AppTheme.spacingMd),
@@ -550,11 +533,7 @@ class _BookingDetailScreenState extends ConsumerState<BookingDetailScreen> {
     );
   }
 
-<<<<<<< HEAD
   Widget _dividerRow() => const Divider(color: AppTheme.hairline, height: 1);
-=======
-  Widget _dividerRow() => const Divider(color: Color(0xFF2C3044), height: 1);
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
   Widget _actionButton({
     required String label,

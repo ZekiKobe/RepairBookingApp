@@ -105,17 +105,10 @@ class _CreateBookingScreenState extends ConsumerState<CreateBookingScreen> {
     if (!mounted) return;
 
     if (success) {
-<<<<<<< HEAD
       await showDialog<void>(
         context: context,
         barrierDismissible: false,
         builder: (dialogContext) => AlertDialog(
-=======
-      Navigator.of(context).pop();
-      showDialog(
-        context: context,
-        builder: (_) => AlertDialog(
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
           backgroundColor: AppTheme.surface,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppTheme.radiusLg)),
           content: Column(
@@ -142,11 +135,7 @@ class _CreateBookingScreenState extends ConsumerState<CreateBookingScreen> {
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-<<<<<<< HEAD
                   onPressed: () => Navigator.of(dialogContext).pop(),
-=======
-                  onPressed: () => Navigator.of(context).pop(),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                   style: TextButton.styleFrom(
                     backgroundColor: AppTheme.primaryColor,
                     padding: const EdgeInsets.symmetric(vertical: 14),
@@ -159,12 +148,9 @@ class _CreateBookingScreenState extends ConsumerState<CreateBookingScreen> {
           ),
         ),
       );
-<<<<<<< HEAD
       if (mounted) {
         Navigator.of(context).pop();
       }
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     } else {
       final error = ref.read(bookingsProvider).error ?? 'Failed to create booking';
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -197,11 +183,7 @@ class _CreateBookingScreenState extends ConsumerState<CreateBookingScreen> {
                       decoration: BoxDecoration(
                         color: AppTheme.surface,
                         borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-<<<<<<< HEAD
                         border: Border.all(color: AppTheme.hairline, width: 1),
-=======
-                        border: Border.all(color: const Color(0xFF2C3044), width: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                       ),
                       child: const Icon(Icons.arrow_back_rounded, size: 20, color: AppTheme.textPrimary),
                     ),
@@ -214,11 +196,7 @@ class _CreateBookingScreenState extends ConsumerState<CreateBookingScreen> {
             ),
 
             const SizedBox(height: AppTheme.spacingMd),
-<<<<<<< HEAD
             const Divider(color: AppTheme.hairline, height: 1),
-=======
-            const Divider(color: Color(0xFF2C3044), height: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
             Expanded(
               child: Form(
@@ -232,11 +210,7 @@ class _CreateBookingScreenState extends ConsumerState<CreateBookingScreen> {
                       decoration: BoxDecoration(
                         color: AppTheme.surface,
                         borderRadius: BorderRadius.circular(AppTheme.radiusLg),
-<<<<<<< HEAD
                         border: Border.all(color: AppTheme.hairline, width: 1),
-=======
-                        border: Border.all(color: const Color(0xFF2C3044), width: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                       ),
                       child: Row(
                         children: [
@@ -303,11 +277,7 @@ class _CreateBookingScreenState extends ConsumerState<CreateBookingScreen> {
                             border: Border.all(
                               color: _selectedService?.id == s.id
                                   ? AppTheme.primaryColor.withOpacity(0.6)
-<<<<<<< HEAD
                                   : AppTheme.hairline,
-=======
-                                  : const Color(0xFF2C3044),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                               width: _selectedService?.id == s.id ? 1.5 : 1,
                             ),
                           ),
@@ -343,11 +313,7 @@ class _CreateBookingScreenState extends ConsumerState<CreateBookingScreen> {
                         decoration: BoxDecoration(
                           color: AppTheme.surface,
                           borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-<<<<<<< HEAD
                           border: Border.all(color: AppTheme.hairline, width: 1),
-=======
-                          border: Border.all(color: const Color(0xFF2C3044), width: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                         ),
                         child: Row(
                           children: [
@@ -385,11 +351,7 @@ class _CreateBookingScreenState extends ConsumerState<CreateBookingScreen> {
                             border: Border.all(
                               color: _selectedTimeSlot == slot
                                   ? AppTheme.primaryColor.withOpacity(0.6)
-<<<<<<< HEAD
                                   : AppTheme.hairline,
-=======
-                                  : const Color(0xFF2C3044),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                               width: _selectedTimeSlot == slot ? 1.5 : 1,
                             ),
                           ),
@@ -428,19 +390,11 @@ class _CreateBookingScreenState extends ConsumerState<CreateBookingScreen> {
                         fillColor: AppTheme.surface,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-<<<<<<< HEAD
                           borderSide: const BorderSide(color: AppTheme.hairline),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(AppTheme.radiusMd),
                           borderSide: const BorderSide(color: AppTheme.hairline),
-=======
-                          borderSide: const BorderSide(color: Color(0xFF2C3044)),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-                          borderSide: const BorderSide(color: Color(0xFF2C3044)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(AppTheme.radiusMd),
@@ -467,19 +421,11 @@ class _CreateBookingScreenState extends ConsumerState<CreateBookingScreen> {
                         fillColor: AppTheme.surface,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-<<<<<<< HEAD
                           borderSide: const BorderSide(color: AppTheme.hairline),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(AppTheme.radiusMd),
                           borderSide: const BorderSide(color: AppTheme.hairline),
-=======
-                          borderSide: const BorderSide(color: Color(0xFF2C3044)),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(AppTheme.radiusMd),
-                          borderSide: const BorderSide(color: Color(0xFF2C3044)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(AppTheme.radiusMd),

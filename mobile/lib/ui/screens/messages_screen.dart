@@ -53,7 +53,6 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(AppTheme.spacingLg),
                 child: Row(
-<<<<<<< HEAD
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
@@ -78,11 +77,6 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen> {
                         ],
                       ),
                     ),
-=======
-                  children: [
-                    Text('Messages', style: Theme.of(context).textTheme.displaySmall?.copyWith(fontWeight: FontWeight.bold)),
-                    const Spacer(),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                     GestureDetector(
                       onTap: () => ref.read(messagesProvider.notifier).loadConversations(),
                       child: Container(
@@ -136,22 +130,14 @@ class _MessagesScreenState extends ConsumerState<MessagesScreen> {
                           ...[
                             _buildConversationTile(messagesState.conversations[i], i),
                             if (i < messagesState.conversations.length - 1)
-<<<<<<< HEAD
                               const Divider(height: 1, thickness: 1, indent: 76, color: AppTheme.hairline),
-=======
-                              const Divider(height: 1, thickness: 1, indent: 76, color: Color(0xFF2C3044)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                           ],
                       ],
                     ),
                   ),
               ),
 
-<<<<<<< HEAD
             const SliverToBoxAdapter(child: SizedBox(height: AppTheme.spacingLg)),
-=======
-            const SliverToBoxAdapter(child: SizedBox(height: 100)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
           ],
         ),
       ),

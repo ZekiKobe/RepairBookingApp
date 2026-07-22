@@ -24,7 +24,6 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-<<<<<<< HEAD
             <!-- Deep links: repairbooking://booking/<bookingId> -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
@@ -32,8 +31,6 @@
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data android:scheme="repairbooking" android:host="booking"/>
             </intent-filter>
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
         </activity>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->

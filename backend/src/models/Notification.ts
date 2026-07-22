@@ -8,12 +8,8 @@ export type NotificationType =
   | 'booking_completed'
   | 'new_message'
   | 'review_received'
-<<<<<<< HEAD
   | 'payment_received'
   | 'announcement';
-=======
-  | 'payment_received';
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
 export interface INotification extends Document {
   user: mongoose.Types.ObjectId;
@@ -30,7 +26,6 @@ const NotificationSchema = new Schema<INotification>(
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true, index: true },
     type: {
       type: String,
-<<<<<<< HEAD
       enum: [
         'booking_new',
         'booking_accepted',
@@ -42,9 +37,6 @@ const NotificationSchema = new Schema<INotification>(
         'payment_received',
         'announcement',
       ],
-=======
-      enum: ['booking_new','booking_accepted','booking_cancelled','booking_in_progress','booking_completed','new_message','review_received','payment_received'],
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       required: true,
     },
     title: { type: String, required: true },

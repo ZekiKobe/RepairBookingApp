@@ -1,16 +1,12 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-<<<<<<< HEAD
 import type { AdminAppRole } from './config/adminPermissions';
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 import Service from './models/Service';
 import User from './models/User';
 import Technician from './models/Technician';
 
 dotenv.config();
 
-<<<<<<< HEAD
 async function ensureAdminAccount(params: {
   phone: string;
   password: string;
@@ -47,8 +43,6 @@ async function ensureAdminAccount(params: {
   console.log(`Updated admin: ${phone} / ${password} (${adminRole})`);
 }
 
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 const services = [
   {
     name: 'Plumbing Repair',
@@ -115,7 +109,6 @@ const seedDatabase = async () => {
     );
     console.log(`Created ${createdServices.length} services`);
     
-<<<<<<< HEAD
     // Admin accounts for the web admin portal (login with phone + password)
     const superPhone = process.env.SEED_ADMIN_PHONE || '0912345678';
     const superPass = process.env.SEED_ADMIN_PASSWORD || 'admin123';
@@ -138,7 +131,6 @@ const seedDatabase = async () => {
       adminRole: 'read_only',
       email: 'readonly@repairbooking.local',
     });
-=======
     // Create admin user if doesn't exist
     const adminExists = await User.findOne({ phone: '0912345678' });
     if (!adminExists) {
@@ -152,7 +144,6 @@ const seedDatabase = async () => {
       });
       console.log('Created admin user: 0912345678 / admin123');
     }
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     
     // Sample technicians data
     const technicianSeeds = [
@@ -247,15 +238,12 @@ const seedDatabase = async () => {
     }
     
     console.log('\nSeed completed successfully!');
-<<<<<<< HEAD
     console.log('\n── Admin portal (http://localhost:5173) ──');
     console.log(`Super admin:  ${superPhone} / ${superPass}`);
     console.log(`Read-only admin: ${roPhone} / ${roPass}`);
     console.log('\n── Mobile / API sample accounts ──');
-=======
     console.log('\nSample accounts:');
     console.log('Admin: 0912345678 / admin123');
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     console.log('Technician: 0998765432 / tech123');
     console.log('User: 0911122334 / user123');
     

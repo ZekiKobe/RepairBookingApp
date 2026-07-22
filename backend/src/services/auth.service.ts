@@ -6,10 +6,7 @@ import { createError } from '../middleware/errorHandler';
 interface TokenPayload {
   userId: string;
   role: string;
-<<<<<<< HEAD
   adminRole?: string;
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 }
 
 export interface AuthTokens {
@@ -25,12 +22,9 @@ export const generateTokens = (user: IUser): AuthTokens => {
   const payload: TokenPayload = {
     userId: user._id.toString(),
     role: user.role,
-<<<<<<< HEAD
     ...(user.role === 'admin'
       ? { adminRole: (user as IUser & { adminRole?: string }).adminRole ?? 'super_admin' }
       : {}),
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   };
   
   const accessOptions: SignOptions = {

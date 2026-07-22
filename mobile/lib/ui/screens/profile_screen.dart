@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-<<<<<<< HEAD
 import 'package:go_router/go_router.dart';
 
 import '../../ui/themes/app_theme.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/bookings_provider.dart';
-=======
-import '../../ui/themes/app_theme.dart';
-import '../../providers/auth_provider.dart';
-import '../../providers/bookings_provider.dart';
-import 'login_screen.dart';
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 import 'edit_profile_screen.dart';
 import 'settings_screens.dart';
 import 'technician_registration_screen.dart';
@@ -41,11 +34,7 @@ class ProfileScreen extends ConsumerWidget {
               child: Container(
                 decoration: BoxDecoration(
                   color: AppTheme.surface,
-<<<<<<< HEAD
                   border: Border.all(color: AppTheme.hairline, width: 1),
-=======
-                  border: Border.all(color: const Color(0xFF2C3044), width: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                   boxShadow: AppTheme.shadowMd,
                 ),
                 child: Column(
@@ -62,7 +51,6 @@ class ProfileScreen extends ConsumerWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-<<<<<<< HEAD
                           // Avatar — circular; tap opens edit profile to change photo
                           Material(
                             color: Colors.transparent,
@@ -110,18 +98,6 @@ class ProfileScreen extends ConsumerWidget {
                                         ),
                                 ),
                               ),
-=======
-                          // Avatar
-                          Container(
-                            width: 80, height: 80,
-                            decoration: BoxDecoration(
-                              gradient: const LinearGradient(colors: AppTheme.primaryGradient),
-                              shape: BoxShape.circle,
-                              boxShadow: AppTheme.shadowMd,
-                            ),
-                            child: Center(
-                              child: Text(initials, style: const TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                             ),
                           ),
                           const SizedBox(width: 16),
@@ -137,11 +113,7 @@ class ProfileScreen extends ConsumerWidget {
                                     ),
                                     // Settings button inline
                                     GestureDetector(
-<<<<<<< HEAD
                                       onTap: () => context.push('/settings'),
-=======
-                                      onTap: () {},
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                                       child: Container(
                                         width: 36, height: 36,
                                         decoration: BoxDecoration(color: AppTheme.surfaceLight, borderRadius: BorderRadius.circular(10)),
@@ -205,24 +177,14 @@ class ProfileScreen extends ConsumerWidget {
                   decoration: BoxDecoration(
                     color: AppTheme.surface,
                     borderRadius: BorderRadius.circular(16),
-<<<<<<< HEAD
                     border: Border.all(color: AppTheme.hairline, width: 1),
-=======
-                    border: Border.all(color: const Color(0xFF2C3044), width: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                   ),
                   child: Row(
                     children: [
                       _compactStat(value: '$totalBookings', label: 'Bookings', icon: Icons.calendar_today_outlined, color: AppTheme.primaryColor),
-<<<<<<< HEAD
                       Container(width: 1, height: 40, color: AppTheme.hairline, margin: const EdgeInsets.symmetric(horizontal: 8)),
                       _compactStat(value: '$completedBookings', label: 'Completed', icon: Icons.check_circle_outlined, color: AppTheme.success),
                       Container(width: 1, height: 40, color: AppTheme.hairline, margin: const EdgeInsets.symmetric(horizontal: 8)),
-=======
-                      Container(width: 1, height: 40, color: const Color(0xFF2C3044), margin: const EdgeInsets.symmetric(horizontal: 8)),
-                      _compactStat(value: '$completedBookings', label: 'Completed', icon: Icons.check_circle_outlined, color: AppTheme.success),
-                      Container(width: 1, height: 40, color: const Color(0xFF2C3044), margin: const EdgeInsets.symmetric(horizontal: 8)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                       _compactStat(value: '$pendingBookings', label: 'Pending', icon: Icons.schedule_outlined, color: AppTheme.primaryAccent),
                     ],
                   ),
@@ -285,11 +247,7 @@ class ProfileScreen extends ConsumerWidget {
                   _buildMenuItem(
                     icon: Icons.notifications_outlined,
                     title: 'Notifications',
-<<<<<<< HEAD
                     subtitle: 'Booking updates and messages',
-=======
-                    subtitle: 'Customize your notification preferences',
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                     color: AppTheme.pastelYellow,
                     iconColor: AppTheme.warning,
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const NotificationsScreen())),
@@ -333,20 +291,7 @@ class ProfileScreen extends ConsumerWidget {
                     if (!confirmed) return;
                     await ref.read(authProvider.notifier).logout();
                     if (context.mounted) {
-<<<<<<< HEAD
                       context.go('/login');
-=======
-                      Navigator.of(context).pushAndRemoveUntil(
-                        PageRouteBuilder(
-                          pageBuilder: (_, animation, secondaryAnimation) => const LoginScreen(),
-                          transitionsBuilder: (_, animation, secondaryAnimation, child) {
-                            return FadeTransition(opacity: animation, child: child);
-                          },
-                          transitionDuration: AppTheme.animSlow,
-                        ),
-                        (route) => false,
-                      );
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                     }
                   },
                   child: Container(
@@ -383,11 +328,7 @@ class ProfileScreen extends ConsumerWidget {
               ),
             ),
 
-<<<<<<< HEAD
             const SliverToBoxAdapter(child: SizedBox(height: AppTheme.spacingLg)),
-=======
-            const SliverToBoxAdapter(child: SizedBox(height: 100)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
           ],
         ),
       ),
@@ -413,11 +354,7 @@ class ProfileScreen extends ConsumerWidget {
             decoration: BoxDecoration(
               color: AppTheme.surface,
               borderRadius: BorderRadius.circular(AppTheme.radiusLg),
-<<<<<<< HEAD
               border: Border.all(color: AppTheme.hairline, width: 1),
-=======
-              border: Border.all(color: const Color(0xFF2C3044), width: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
             ),
             child: Row(
               children: [
@@ -558,11 +495,7 @@ class ProfileScreen extends ConsumerWidget {
       decoration: BoxDecoration(
         color: AppTheme.surface,
         borderRadius: BorderRadius.circular(AppTheme.radiusLg),
-<<<<<<< HEAD
         border: Border.all(color: AppTheme.hairline, width: 1),
-=======
-        border: Border.all(color: const Color(0xFF2C3044), width: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -725,11 +658,7 @@ class ProfileScreen extends ConsumerWidget {
                 ],
               ),
               const SizedBox(height: AppTheme.spacingMd),
-<<<<<<< HEAD
               const Divider(color: AppTheme.hairline),
-=======
-              const Divider(color: Color(0xFF2C3044)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
               const SizedBox(height: AppTheme.spacingMd),
 
               // Checklist items
@@ -921,11 +850,7 @@ class ProfileScreen extends ConsumerWidget {
             ),
           ),
         ),
-<<<<<<< HEAD
       const Divider(height: 1, thickness: 1, color: AppTheme.hairline),
-=======
-      const Divider(height: 1, thickness: 1, color: Color(0xFF2C3044)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       ],
     );
   }

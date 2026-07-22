@@ -138,12 +138,9 @@ export const searchTechnicians = async (query: {
   const {
     service,
     category,
-<<<<<<< HEAD
     lat,
     lng,
     radius,
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     isAvailable,
     isApproved = true,
     minRating,
@@ -152,7 +149,6 @@ export const searchTechnicians = async (query: {
   } = query;
   
   const filter: any = { isApproved };
-<<<<<<< HEAD
 
   if (
     typeof lat === 'number' &&
@@ -179,9 +175,6 @@ export const searchTechnicians = async (query: {
     filter.user = { $in: nearUserIds };
   }
 
-=======
-  
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   if (typeof isAvailable === 'boolean') filter.isAvailable = isAvailable;
   if (minRating) filter.rating = { $gte: minRating };
   if (service) {

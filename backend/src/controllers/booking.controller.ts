@@ -9,12 +9,9 @@ import {
   acceptBooking,
   cancelBooking,
   getBookingStatistics,
-<<<<<<< HEAD
   listBookingsForAdmin,
   updateBookingInternalNotes,
   assignBookingTechnician,
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 } from '../services/booking.service';
 import Booking from '../models/Booking';
 import Technician from '../models/Technician';
@@ -251,11 +248,7 @@ export const cancelBookingRequest = async (req: AuthRequest, res: Response, next
       return;
     }
     
-<<<<<<< HEAD
     const cancelledBy: 'user' | 'technician' | 'admin' = isAdmin ? 'admin' : isUser ? 'user' : 'technician';
-=======
-    const cancelledBy = isUser ? 'user' : 'technician';
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     const cancelledBooking = await cancelBooking(id as string, cancelledBy, reason);
 
     // Notify the other party
@@ -268,16 +261,11 @@ export const cancelBookingRequest = async (req: AuthRequest, res: Response, next
           await createNotification({ userId: cancelTechUserId, type: 'booking_cancelled', title: 'Booking Cancelled', body: 'A customer has cancelled their booking.', bookingId: booking._id.toString() });
           await sendPushToUser(cancelTechUserId, 'Booking Cancelled', 'A customer has cancelled their booking.');
         }
-<<<<<<< HEAD
       } else if (cancelledBy === 'technician') {
-=======
-      } else {
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
         // Notify customer
         const cancelCustomerId = booking.user.toString();
         await createNotification({ userId: cancelCustomerId, type: 'booking_cancelled', title: 'Booking Cancelled', body: 'The technician has cancelled your booking.', bookingId: booking._id.toString() });
         await sendPushToUser(cancelCustomerId, 'Booking Cancelled', 'The technician has cancelled your booking.');
-<<<<<<< HEAD
       } else {
         const cancelCustomerId = booking.user.toString();
         const tech = await Technician.findById(booking.technician).select('user');
@@ -289,8 +277,6 @@ export const cancelBookingRequest = async (req: AuthRequest, res: Response, next
           await createNotification({ userId: cancelTechUserId, type: 'booking_cancelled', title: 'Booking Cancelled', body: msg, bookingId: booking._id.toString() });
           await sendPushToUser(cancelTechUserId, 'Booking Cancelled', msg);
         }
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       }
     } catch (_) {}
 
@@ -327,7 +313,6 @@ export const getMyStatistics = async (req: AuthRequest, res: Response, next: Nex
 // Admin
 export const getAllBookings = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-<<<<<<< HEAD
     const page = req.query.page ? parseInt(req.query.page as string, 10) : 1;
     const limit = req.query.limit ? parseInt(req.query.limit as string, 10) : 20;
     const status = req.query.status as import('../models/Booking').BookingStatus | undefined;
@@ -357,43 +342,12 @@ export const getAllBookings = async (req: Request, res: Response, next: NextFunc
     res.json({
       success: true,
       data: result,
-=======
-    const { status, page = 1, limit = 20 } = req.query;
-    
-    const filter: any = {};
-    if (status) filter.status = status;
-    
-    const skip = (parseInt(page as string) - 1) * parseInt(limit as string);
-    
-    const [bookings, total] = await Promise.all([
-      Booking.find(filter)
-        .populate([
-          { path: 'user', select: 'firstName lastName phone' },
-          { path: 'technician', populate: { path: 'user', select: 'firstName lastName phone' } },
-          { path: 'service', select: 'name' },
-        ])
-        .sort({ createdAt: -1 })
-        .skip(skip)
-        .limit(parseInt(limit as string)),
-      Booking.countDocuments(filter),
-    ]);
-    
-    res.json({
-      success: true,
-      data: {
-        bookings,
-        total,
-        page: parseInt(page as string),
-        pages: Math.ceil(total / parseInt(limit as string)),
-      },
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     });
   } catch (error) {
     next(error);
   }
 };
 
-<<<<<<< HEAD
 export const adminUpdateBookingNotes = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
   try {
     const id = String(req.params.id);
@@ -424,8 +378,6 @@ export const adminAssignBookingTechnician = async (req: AuthRequest, res: Respon
   }
 };
 
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 export const getAdminStatistics = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const stats = await getBookingStatistics();
@@ -438,7 +390,6 @@ export const getAdminStatistics = async (req: Request, res: Response, next: Next
     next(error);
   }
 };
-<<<<<<< HEAD
 
 function escapeHtml(s: string): string {
   return s
@@ -479,5 +430,3 @@ export const getBookingInvoice = async (req: AuthRequest, res: Response, next: N
     next(error);
   }
 };
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739

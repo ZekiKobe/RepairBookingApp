@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:go_router/go_router.dart';
 
 import '../../ui/themes/app_theme.dart';
-=======
-import '../../ui/themes/app_theme.dart';
-import 'login_screen.dart';
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -56,13 +51,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   void _getStarted() {
-<<<<<<< HEAD
     context.go('/login');
-=======
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const LoginScreen()),
-    );
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   }
 
   @override

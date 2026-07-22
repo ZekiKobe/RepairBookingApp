@@ -2,10 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/user_model.dart';
 import '../models/technician_model.dart';
 import '../services/auth_service.dart';
-<<<<<<< HEAD
-=======
-import '../services/api_service.dart';
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 import '../services/technician_service.dart';
 import '../services/user_service.dart';
 import '../services/push_service.dart';
@@ -135,7 +131,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
     }
   }
 
-<<<<<<< HEAD
   Future<bool> loginWithGoogle({String role = 'user'}) async {
     state = state.copyWith(isLoading: true, error: null);
     final response = await _authService.googleSignIn(role: role);
@@ -156,25 +151,17 @@ class AuthNotifier extends StateNotifier<AuthState> {
     }
   }
 
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   Future<String?> updateProfile({
     String? firstName,
     String? lastName,
     String? email,
-<<<<<<< HEAD
     String? avatar,
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   }) async {
     final response = await UserService().updateProfile(
       firstName: firstName,
       lastName: lastName,
       email: email,
-<<<<<<< HEAD
       avatar: avatar,
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     );
     if (response.success && response.data != null) {
       state = state.copyWith(user: response.data);

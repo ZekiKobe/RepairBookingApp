@@ -8,10 +8,7 @@ import {
   markDirectMessagesAsRead,
   getUnreadMessageCount,
   getConversationList,
-<<<<<<< HEAD
   assertBookingMessagingAccess,
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 } from '../services/message.service';
 
 export const sendMessage = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
@@ -51,7 +48,6 @@ export const sendMessage = async (req: AuthRequest, res: Response, next: NextFun
       receiverId,
       content,
     });
-<<<<<<< HEAD
 
     if (bookingId) {
       try {
@@ -59,8 +55,6 @@ export const sendMessage = async (req: AuthRequest, res: Response, next: NextFun
         emitBookingMessage(bookingId, { message });
       } catch (_) {}
     }
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     
     res.status(201).json({
       success: true,
@@ -76,16 +70,12 @@ export const getBookingMessages = async (req: AuthRequest, res: Response, next: 
   try {
     const { bookingId } = req.params;
     const { page, limit } = req.query;
-<<<<<<< HEAD
 
     await assertBookingMessagingAccess(bookingId as string, req.user!._id.toString(), {
       allowAdminRead: true,
       userRole: req.user!.role,
     });
 
-=======
-    
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     const result = await getMessagesByBooking(
       bookingId as string,
       page ? parseInt(page as string) : 1,

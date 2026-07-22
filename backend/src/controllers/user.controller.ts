@@ -103,7 +103,6 @@ export const updateFcmToken = async (req: AuthRequest, res: Response, next: Next
     next(error);
   }
 };
-<<<<<<< HEAD
 
 export const exportMyData = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
   try {
@@ -145,5 +144,3 @@ export const recordConsents = async (req: AuthRequest, res: Response, next: Next
     next(error);
   }
 };
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739

@@ -4,11 +4,7 @@ import { MockPaymentProvider } from './mock';
 import { ChapaPaymentProvider } from './chapa';
 import { TelebirrPaymentProvider } from './telebirr';
 
-<<<<<<< HEAD
 export { PaymentInitResult, PaymentVerifyResult, RefundResult } from './types';
-=======
-export { PaymentInitResult, PaymentVerifyResult } from './types';
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
 let _instance: PaymentProvider | null = null;
 

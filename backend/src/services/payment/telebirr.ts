@@ -1,10 +1,6 @@
 import axios from 'axios';
 import crypto from 'crypto';
-<<<<<<< HEAD
 import { PaymentProvider, PaymentInitResult, PaymentVerifyResult, RefundResult } from './types';
-=======
-import { PaymentProvider, PaymentInitResult, PaymentVerifyResult } from './types';
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 import { telebirrConfig } from '../../config/providers';
 
 // Telebirr Super App API (Ethio Telecom)
@@ -96,11 +92,8 @@ export class TelebirrPaymentProvider implements PaymentProvider {
 
     return { status, txRef };
   }
-<<<<<<< HEAD
 
   async refund(): Promise<RefundResult> {
     return { status: 'failed', message: 'Telebirr refund not implemented in this integration' };
   }
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 }

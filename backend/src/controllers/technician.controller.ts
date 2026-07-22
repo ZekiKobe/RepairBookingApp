@@ -11,10 +11,7 @@ import {
   searchTechnicians,
   approveTechnician,
 } from '../services/technician.service';
-<<<<<<< HEAD
 import Technician from '../models/Technician';
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
 export const getMyTechnicianProfile = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
   try {
@@ -167,7 +164,6 @@ export const approveTechnicianProfile = async (req: AuthRequest, res: Response, 
   }
 };
 
-<<<<<<< HEAD
 export const setTechnicianSuspended = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { id } = req.params;
@@ -194,8 +190,6 @@ export const setTechnicianSuspended = async (req: AuthRequest, res: Response, ne
   }
 };
 
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 export const listPendingTechnicians = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { page, limit } = req.query;

@@ -1,14 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:go_router/go_router.dart';
 import 'package:repair_booking/l10n/app_localizations.dart';
 
 import '../../ui/themes/app_theme.dart';
-=======
-import '../../ui/themes/app_theme.dart';
-import 'onboarding_screen.dart';
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -48,27 +43,9 @@ class _SplashScreenState extends State<SplashScreen>
 
     _controller.forward();
 
-<<<<<<< HEAD
     Timer(const Duration(milliseconds: 2500), () {
       if (mounted) {
         context.go('/onboarding');
-=======
-    // Navigate to onboarding after 2.5 seconds
-    Timer(const Duration(milliseconds: 2500), () {
-      if (mounted) {
-        Navigator.of(context).pushReplacement(
-          PageRouteBuilder(
-            pageBuilder: (_, animation, secondaryAnimation) => const OnboardingScreen(),
-            transitionsBuilder: (_, animation, secondaryAnimation, child) {
-              return FadeTransition(
-                opacity: animation,
-                child: child,
-              );
-            },
-            transitionDuration: const Duration(milliseconds: 500),
-          ),
-        );
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       }
     });
   }
@@ -81,10 +58,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     final l10n = AppLocalizations.of(context);
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     return Scaffold(
       backgroundColor: AppTheme.background,
       body: Center(
@@ -122,11 +96,7 @@ class _SplashScreenState extends State<SplashScreen>
                     
                     // App Name
                     Text(
-<<<<<<< HEAD
                       l10n.appTitle,
-=======
-                      'RepairPro',
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                       style: Theme.of(context).textTheme.displaySmall?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: AppTheme.textPrimary,
@@ -135,11 +105,7 @@ class _SplashScreenState extends State<SplashScreen>
                     const SizedBox(height: AppTheme.spacingSm),
                     // Tagline
                     Text(
-<<<<<<< HEAD
                       l10n.splashTagline,
-=======
-                      'Expert Technicians at Your Doorstep',
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: AppTheme.textSecondary,
                       ),

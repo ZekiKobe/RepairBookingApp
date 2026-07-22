@@ -7,11 +7,8 @@ import { getPaymentProvider } from '../services/payment';
 import { createNotification } from '../services/notification.service';
 import { sendPushToUser } from '../services/push';
 import { providers, chapaConfig } from '../config/providers';
-<<<<<<< HEAD
 import { appendLedgerEntry } from '../services/ledger.service';
 import { appendAuditLog } from '../services/audit.service';
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
 /**
  * POST /api/payments/intent
@@ -82,15 +79,11 @@ export const confirmPayment = async (req: AuthRequest, res: Response, next: Next
     const result = await getPaymentProvider().verify(verifyRef);
 
     if (result.status === 'paid') {
-<<<<<<< HEAD
       const wasUnpaid = booking.paymentStatus !== 'paid';
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       booking.paymentStatus = 'paid';
       booking.paymentIntentId = verifyRef;
       await booking.save();
 
-<<<<<<< HEAD
       if (wasUnpaid) {
         try {
           await appendLedgerEntry({
@@ -106,8 +99,6 @@ export const confirmPayment = async (req: AuthRequest, res: Response, next: Next
         } catch (_) {}
       }
 
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       // Notify technician
       try {
         const Technician = (await import('../models/Technician')).default;
@@ -196,7 +187,6 @@ export const paymentWebhook = async (req: Request, res: Response, next: NextFunc
       booking.paymentStatus = 'paid';
       await booking.save();
 
-<<<<<<< HEAD
       try {
         await appendLedgerEntry({
           type: 'payment',
@@ -210,8 +200,6 @@ export const paymentWebhook = async (req: Request, res: Response, next: NextFunc
         });
       } catch (_) {}
 
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
       const userId = booking.user.toString();
       await createNotification({ userId, type: 'payment_received', title: 'Payment Confirmed', body: `Your payment of ETB ${booking.price} has been confirmed.`, bookingId: booking._id.toString() });
       await sendPushToUser(userId, 'Payment Confirmed', `Your payment of ETB ${booking.price} was successful.`);
@@ -222,7 +210,6 @@ export const paymentWebhook = async (req: Request, res: Response, next: NextFunc
     next(error);
   }
 };
-<<<<<<< HEAD
 
 /**
  * POST /api/payments/refund  (admin) — marks booking refunded and records ledger entry.
@@ -291,5 +278,3 @@ export const refundPayment = async (req: AuthRequest, res: Response, next: NextF
     next(error);
   }
 };
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739

@@ -5,19 +5,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
-<<<<<<< HEAD
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 import '../../ui/themes/app_theme.dart';
 import '../../providers/messages_provider.dart';
 import '../../providers/auth_provider.dart';
 import '../../models/message_model.dart';
-<<<<<<< HEAD
 import '../../services/api_service.dart';
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
 class ChatScreen extends ConsumerStatefulWidget {
   final String? bookingId;      // set for booking-based chat
@@ -47,10 +41,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
   MessageModel? _editingMessage;
   List<File> _attachments = [];
   final _imagePicker = ImagePicker();
-<<<<<<< HEAD
   IO.Socket? _socket;
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
   @override
   void initState() {
@@ -62,7 +53,6 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
     _pollTimer = Timer.periodic(const Duration(seconds: 5), (_) {
       if (mounted) _loadMessages();
     });
-<<<<<<< HEAD
     _connectBookingSocket();
   }
 
@@ -89,17 +79,12 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
       });
       _socket!.connect();
     } catch (_) {}
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   }
 
   @override
   void dispose() {
     _pollTimer?.cancel();
-<<<<<<< HEAD
     _socket?.dispose();
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     _messageController.dispose();
     _scrollController.dispose();
     // Refresh unread count when leaving chat
@@ -256,11 +241,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
               padding: const EdgeInsets.fromLTRB(AppTheme.spacingMd, AppTheme.spacingMd, AppTheme.spacingMd, AppTheme.spacingMd),
               decoration: BoxDecoration(
                 color: AppTheme.surface,
-<<<<<<< HEAD
                 border: Border(bottom: BorderSide(color: AppTheme.hairline, width: 1)),
-=======
-                border: Border(bottom: BorderSide(color: const Color(0xFF2C3044), width: 1)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
               ),
               child: Row(
                 children: [
@@ -358,11 +339,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
             Container(
               decoration: BoxDecoration(
                 color: AppTheme.surface,
-<<<<<<< HEAD
                 border: Border(top: BorderSide(color: AppTheme.hairline, width: 1)),
-=======
-                border: Border(top: BorderSide(color: const Color(0xFF2C3044), width: 1)),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -451,11 +428,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                             decoration: BoxDecoration(
                               color: AppTheme.surfaceLight,
                               borderRadius: BorderRadius.circular(20),
-<<<<<<< HEAD
                               border: Border.all(color: AppTheme.hairline, width: 1),
-=======
-                              border: Border.all(color: const Color(0xFF2C3044), width: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                             ),
                             child: TextField(
                               controller: _messageController,
@@ -595,11 +568,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> {
                     bottomLeft: Radius.circular(isMe ? 16 : 4),
                     bottomRight: Radius.circular(isMe ? 4 : 16),
                   ),
-<<<<<<< HEAD
                   border: isMe ? null : Border.all(color: AppTheme.hairline, width: 1),
-=======
-                  border: isMe ? null : Border.all(color: const Color(0xFF2C3044), width: 1),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                   boxShadow: [
                     BoxShadow(
                       color: isMe

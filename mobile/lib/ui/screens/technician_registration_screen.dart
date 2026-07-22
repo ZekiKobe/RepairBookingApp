@@ -485,11 +485,7 @@ class _TechnicianRegistrationScreenState
                     border: Border.all(
                       color: selected
                           ? AppTheme.primaryColor.withOpacity(0.7)
-<<<<<<< HEAD
                           : AppTheme.hairline,
-=======
-                          : const Color(0xFF2C3044),
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
                       width: selected ? 1.5 : 1,
                     ),
                   ),

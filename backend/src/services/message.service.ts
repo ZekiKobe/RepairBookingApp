@@ -1,6 +1,5 @@
 import Message, { IMessage } from '../models/Message';
 import Booking from '../models/Booking';
-<<<<<<< HEAD
 import Technician from '../models/Technician';
 import { createError } from '../middleware/errorHandler';
 
@@ -19,10 +18,6 @@ export const assertBookingMessagingAccess = async (
   throw createError('Not authorized to access messages for this booking', 403);
 };
 
-=======
-import { createError } from '../middleware/errorHandler';
-
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 interface CreateMessageData {
   bookingId?: string;
   senderId: string;
@@ -34,12 +29,7 @@ export const createMessage = async (data: CreateMessageData): Promise<IMessage> 
   const { bookingId, senderId, receiverId, content } = data;
   
   if (bookingId) {
-<<<<<<< HEAD
     await assertBookingMessagingAccess(bookingId, senderId);
-=======
-    const booking = await Booking.findById(bookingId);
-    if (!booking) throw createError('Booking not found', 404);
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   }
   
   const message = await Message.create({
