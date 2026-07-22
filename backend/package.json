@@ -23,23 +23,16 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.1",
     "express": "^5.2.1",
-<<<<<<< HEAD
     "express-rate-limit": "^8.5.2",
     "firebase-admin": "^13.8.0",
     "google-auth-library": "^10.6.2",
-=======
-    "firebase-admin": "^13.8.0",
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     "helmet": "^8.1.0",
     "joi": "^18.1.2",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.4.1",
     "morgan": "^1.10.1",
     "multer": "^2.1.1",
-<<<<<<< HEAD
     "socket.io": "^4.8.3",
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
     "twilio": "^5.13.1"
   },
   "devDependencies": {
@@ -53,10 +46,6 @@
     "@types/node": "^25.5.2",
     "nodemon": "^3.1.14",
     "ts-node": "^10.9.2",
-<<<<<<< HEAD
     "typescript": "~5.6.3"
-=======
-    "typescript": "^6.0.2"
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   }
 }

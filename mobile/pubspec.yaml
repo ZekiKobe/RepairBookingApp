@@ -30,11 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-<<<<<<< HEAD
   flutter_localizations:
     sdk: flutter
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
   cupertino_icons: ^1.0.8
   
@@ -51,19 +48,13 @@ dependencies:
   go_router: ^13.0.1
   
   # UI Components
-<<<<<<< HEAD
   google_fonts: ^6.2.1
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   flutter_svg: ^2.0.9
   cached_network_image: ^3.3.1
   shimmer: ^3.0.0
   flutter_rating_bar: ^4.0.1
-<<<<<<< HEAD
   intl: ^0.20.2
-=======
   intl: ^0.19.0
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   
   # Maps & Location
   google_maps_flutter: ^2.5.0
@@ -77,12 +68,9 @@ dependencies:
   # URL Launcher (for Chapa/Telebirr checkout)
   url_launcher: ^6.2.5
 
-<<<<<<< HEAD
   # Google Sign-In
   google_sign_in: ^6.2.1
 
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   # Firebase Push Notifications
   firebase_core: ^3.1.0
   firebase_messaging: ^15.0.3
@@ -92,10 +80,7 @@ dependencies:
   
   # Calendar
   table_calendar: ^3.0.9
-<<<<<<< HEAD
   socket_io_client: ^3.1.4
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
 
 dev_dependencies:
   flutter_test:
@@ -113,10 +98,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-<<<<<<< HEAD
   generate: true
-=======
->>>>>>> 7a99d2a4973779009dc79d478870a5ac6e594739
   uses-material-design: true
   
   assets:

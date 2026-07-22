@@ -5,10 +5,6 @@ import { toast } from 'sonner';
 import { z } from 'zod';
 import { Lock, Phone } from 'lucide-react';
 import { loginAdmin } from '@/api/auth.api';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { useAuthStore } from '@/state/authStore';
 
 const schema = z.object({
@@ -43,41 +39,58 @@ export default function LoginPage() {
   }
 
   return (
-    <Card className="w-full max-w-[420px]">
-      <CardHeader className="space-y-1.5 pb-2">
-        <CardTitle className="text-xl font-bold">Sign in</CardTitle>
-        <CardDescription>Enter your admin phone number and password to continue.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
-          <div className="space-y-2">
-            <Label htmlFor="phone">Phone</Label>
-            <div className="relative">
-              <Phone className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-              <Input id="phone" className="pl-9" autoComplete="username" placeholder="09xxxxxxxx" {...register('phone')} />
-            </div>
-            {errors.phone && <p className="text-sm text-destructive">{errors.phone.message}</p>}
+    <div className="w-full max-w-[420px] rounded-2xl bg-white p-8 shadow-[0_12px_40px_-16px_rgba(15,23,42,0.18)] ring-1 ring-slate-900/5 sm:p-9">
+      <div className="mb-7">
+        <h1 className="text-2xl font-bold tracking-tight text-slate-900">Sign in</h1>
+        <p className="mt-1.5 text-sm leading-relaxed text-slate-500">
+          Enter your admin phone number and password to continue.
+        </p>
+      </div>
+
+      <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
+        <div className="space-y-2">
+          <label htmlFor="phone" className="block text-sm font-medium text-slate-700">
+            Phone
+          </label>
+          <div className="relative">
+            <Phone className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
+            <input
+              id="phone"
+              autoComplete="username"
+              placeholder="09xxxxxxxx"
+              className="h-11 w-full rounded-xl border border-slate-200 bg-slate-50/80 pl-10 pr-3.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-teal-600 focus:bg-white focus:ring-4 focus:ring-teal-600/15"
+              {...register('phone')}
+            />
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
-            <div className="relative">
-              <Lock className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                id="password"
-                type="password"
-                className="pl-9"
-                autoComplete="current-password"
-                placeholder="••••••••"
-                {...register('password')}
-              />
-            </div>
-            {errors.password && <p className="text-sm text-destructive">{errors.password.message}</p>}
+          {errors.phone && <p className="text-sm text-red-600">{errors.phone.message}</p>}
+        </div>
+
+        <div className="space-y-2">
+          <label htmlFor="password" className="block text-sm font-medium text-slate-700">
+            Password
+          </label>
+          <div className="relative">
+            <Lock className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
+            <input
+              id="password"
+              type="password"
+              autoComplete="current-password"
+              placeholder="••••••••"
+              className="h-11 w-full rounded-xl border border-slate-200 bg-slate-50/80 pl-10 pr-3.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-teal-600 focus:bg-white focus:ring-4 focus:ring-teal-600/15"
+              {...register('password')}
+            />
           </div>
-          <Button type="submit" className="mt-2 h-11 w-full rounded-xl text-sm font-semibold" disabled={isSubmitting}>
-            {isSubmitting ? 'Signing in…' : 'Sign in to console'}
-          </Button>
-        </form>
-      </CardContent>
-    </Card>
+          {errors.password && <p className="text-sm text-red-600">{errors.password.message}</p>}
+        </div>
+
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="mt-1 flex h-11 w-full items-center justify-center rounded-xl bg-teal-700 text-sm font-semibold text-white transition hover:bg-teal-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-teal-700/25 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {isSubmitting ? 'Signing in…' : 'Sign in to console'}
+        </button>
+      </form>
+    </div>
   );
 }
