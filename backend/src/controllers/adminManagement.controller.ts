@@ -12,15 +12,108 @@ import { AuthRequest } from '../middleware/auth';
 
 function defaultPlatformSections() {
   return {
-    general: { companyName: 'Repair Booking', supportEmail: '', timezone: 'Africa/Addis_Ababa' },
-    branding: { primaryColor: '#0f172a', logoUrl: '' },
-    booking: { defaultSlotMinutes: 60, maxAdvanceDays: 30 },
-    payments: { defaultCurrency: 'ETB' },
-    tax: { ratePercent: 0, inclusive: false },
-    notifications: { pushEnabled: true, emailEnabled: false },
-    security: { sessionTimeoutMinutes: 60, minPasswordLength: 6 },
-    maintenance: { enabled: false, message: '' },
-    mfa: { enabled: false, enforcedForAdmins: false },
+    general: {
+      companyName: 'Repair Booking',
+      legalName: '',
+      supportEmail: 'support@repairbooking.com',
+      supportPhone: '',
+      whatsappNumber: '',
+      website: '',
+      address: '',
+      city: 'Addis Ababa',
+      country: 'Ethiopia',
+      timezone: 'Africa/Addis_Ababa',
+      locale: 'en-ET',
+      businessHoursNote: 'Mon–Sat 8:00–18:00',
+    },
+    branding: {
+      appName: 'RepairBooking',
+      tagline: 'Book trusted repair technicians',
+      primaryColor: '#0f766e',
+      secondaryColor: '#0f1c1a',
+      logoUrl: '',
+      faviconUrl: '',
+    },
+    booking: {
+      defaultSlotMinutes: 60,
+      minAdvanceHours: 2,
+      maxAdvanceDays: 30,
+      cancellationWindowHours: 6,
+      rescheduleWindowHours: 12,
+      allowCustomerCancel: true,
+      allowCustomerReschedule: true,
+      autoAssignTechnician: false,
+      requireAddress: true,
+      requirePhoneVerification: false,
+      maxActiveBookingsPerCustomer: 5,
+    },
+    payments: {
+      defaultCurrency: 'ETB',
+      platformFeePercent: 10,
+      technicianCommissionPercent: 80,
+      depositRequired: false,
+      depositPercent: 0,
+      refundWindowHours: 24,
+      autoCapture: true,
+      acceptedMethods: ['chapa', 'telebirr', 'cash'],
+    },
+    tax: {
+      enabled: false,
+      taxName: 'VAT',
+      ratePercent: 15,
+      inclusive: false,
+      taxId: '',
+    },
+    notifications: {
+      pushEnabled: true,
+      emailEnabled: false,
+      smsEnabled: false,
+      bookingReminderHours: 2,
+      notifyAdminOnNewBooking: true,
+      notifyAdminOnDispute: true,
+      adminAlertEmail: '',
+    },
+    security: {
+      sessionTimeoutMinutes: 60,
+      minPasswordLength: 8,
+      requireStrongPassword: true,
+      maxLoginAttempts: 5,
+      lockoutMinutes: 15,
+    },
+    maintenance: {
+      enabled: false,
+      message: 'We are performing scheduled maintenance. Please try again shortly.',
+      allowAdminAccess: true,
+    },
+    mfa: {
+      enabled: false,
+      enforcedForAdmins: false,
+    },
+  };
+}
+
+function mergeSettingsDoc(doc: {
+  general?: Record<string, unknown>;
+  branding?: Record<string, unknown>;
+  booking?: Record<string, unknown>;
+  payments?: Record<string, unknown>;
+  tax?: Record<string, unknown>;
+  notifications?: Record<string, unknown>;
+  security?: Record<string, unknown>;
+  maintenance?: Record<string, unknown>;
+  mfa?: Record<string, unknown>;
+}) {
+  const d = defaultPlatformSections();
+  return {
+    general: { ...d.general, ...(doc.general ?? {}) },
+    branding: { ...d.branding, ...(doc.branding ?? {}) },
+    booking: { ...d.booking, ...(doc.booking ?? {}) },
+    payments: { ...d.payments, ...(doc.payments ?? {}) },
+    tax: { ...d.tax, ...(doc.tax ?? {}) },
+    notifications: { ...d.notifications, ...(doc.notifications ?? {}) },
+    security: { ...d.security, ...(doc.security ?? {}) },
+    maintenance: { ...d.maintenance, ...(doc.maintenance ?? {}) },
+    mfa: { ...d.mfa, ...(doc.mfa ?? {}) },
   };
 }
 
@@ -144,17 +237,7 @@ export const getPlatformSettings = async (_req: Request, res: Response, next: Ne
     }
     res.json({
       success: true,
-      data: {
-        general: doc.general,
-        branding: doc.branding,
-        booking: doc.booking,
-        payments: doc.payments,
-        tax: doc.tax,
-        notifications: doc.notifications,
-        security: doc.security,
-        maintenance: doc.maintenance,
-        mfa: doc.mfa,
-      },
+      data: mergeSettingsDoc(doc),
     });
   } catch (error) {
     next(error);
@@ -185,17 +268,7 @@ export const putPlatformSettings = async (req: AuthRequest, res: Response, next:
     res.json({
       success: true,
       message: 'Settings updated',
-      data: {
-        general: doc!.general,
-        branding: doc!.branding,
-        booking: doc!.booking,
-        payments: doc!.payments,
-        tax: doc!.tax,
-        notifications: doc!.notifications,
-        security: doc!.security,
-        maintenance: doc!.maintenance,
-        mfa: doc!.mfa,
-      },
+      data: mergeSettingsDoc(doc!),
     });
   } catch (error) {
     next(error);

@@ -10,6 +10,7 @@ import {
   isPasswordResetOtpValid,
   consumePasswordResetOtp,
 } from '../services/otp.service';
+import { AuthRequest } from '../middleware/auth';
 
 export const register = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
@@ -213,6 +214,44 @@ export const resetPassword = async (req: Request, res: Response, next: NextFunct
     await user.save();
 
     res.json({ success: true, message: 'Password reset successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/** Authenticated user changes their own password (admin console, etc.). */
+export const changePassword = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const { currentPassword, newPassword } = req.body as { currentPassword?: string; newPassword?: string };
+    if (!currentPassword || !newPassword) {
+      res.status(400).json({ success: false, message: 'Current and new password are required' });
+      return;
+    }
+    if (newPassword.length < 6) {
+      res.status(400).json({ success: false, message: 'New password must be at least 6 characters' });
+      return;
+    }
+    if (currentPassword === newPassword) {
+      res.status(400).json({ success: false, message: 'New password must be different from the current password' });
+      return;
+    }
+
+    const user = await User.findById(req.user!._id).select('+password');
+    if (!user) {
+      res.status(404).json({ success: false, message: 'User not found' });
+      return;
+    }
+
+    const ok = await user.comparePassword(currentPassword);
+    if (!ok) {
+      res.status(400).json({ success: false, message: 'Current password is incorrect' });
+      return;
+    }
+
+    user.password = newPassword;
+    await user.save();
+
+    res.json({ success: true, message: 'Password updated successfully' });
   } catch (error) {
     next(error);
   }

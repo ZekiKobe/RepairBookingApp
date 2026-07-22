@@ -2,24 +2,35 @@ import { useState } from 'react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import {
   Bell,
+  ChevronDown,
   ClipboardList,
   FileBarChart,
+  KeyRound,
   LayoutDashboard,
+  LogOut,
   Menu,
   Moon,
-  PanelLeftClose,
   PanelLeft,
+  PanelLeftClose,
   ScrollText,
   Settings,
   Sun,
-  LogOut,
   Users,
   Wallet,
   Wrench,
   X,
 } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { ChangePasswordDialog } from '@/components/ChangePasswordDialog';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
 import { initials } from '@/lib/format';
 import { useAuthStore } from '@/state/authStore';
@@ -80,6 +91,7 @@ function resolveTitle(pathname: string) {
 export default function AppShell() {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [passwordOpen, setPasswordOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
@@ -87,6 +99,7 @@ export default function AppShell() {
   const clearSession = useAuthStore((s) => s.clearSession);
   const hasPermission = useAuthStore((s) => s.hasPermission);
   const title = resolveTitle(location.pathname);
+  const canSettings = hasPermission(P.SETTINGS_READ);
 
   function logout() {
     clearSession();
@@ -196,15 +209,6 @@ export default function AppShell() {
                 </p>
                 <p className="truncate text-[10px] text-sidebar-muted">Administrator</p>
               </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="size-8 shrink-0 text-sidebar-muted hover:bg-white/10 hover:text-sidebar-foreground"
-                onClick={logout}
-                aria-label="Log out"
-              >
-                <LogOut className="size-3.5" />
-              </Button>
             </div>
           )}
         </div>
@@ -239,24 +243,58 @@ export default function AppShell() {
               <Sun className="size-4 dark:hidden" />
               <Moon className="hidden size-4 dark:inline" />
             </Button>
-            <div className="ml-1 hidden items-center gap-2 rounded-full bg-muted/50 py-1 pl-1 pr-3 sm:flex">
-              <div className="flex size-7 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
-                {initials(user?.firstName, user?.lastName)}
-              </div>
-              <span className="max-w-[9rem] truncate text-xs font-medium">
-                {user?.firstName} {user?.lastName}
-              </span>
-            </div>
-            <Button variant="outline" size="sm" className="ml-1 hidden rounded-full sm:inline-flex" onClick={logout}>
-              <LogOut className="size-3.5 opacity-80" />
-              Log out
-            </Button>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  type="button"
+                  className="ml-1 flex items-center gap-2 rounded-full bg-muted/50 py-1 pl-1 pr-2.5 outline-none ring-offset-background transition hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <div className="flex size-7 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
+                    {initials(user?.firstName, user?.lastName)}
+                  </div>
+                  <span className="hidden max-w-[9rem] truncate text-xs font-medium sm:inline">
+                    {user?.firstName} {user?.lastName}
+                  </span>
+                  <ChevronDown className="size-3.5 text-muted-foreground" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuLabel>
+                  <p className="truncate text-sm font-semibold text-foreground">
+                    {user?.firstName} {user?.lastName}
+                  </p>
+                  <p className="truncate font-normal">{user?.phone}</p>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onSelect={() => setPasswordOpen(true)}>
+                  <KeyRound className="size-4 opacity-70" />
+                  Change password
+                </DropdownMenuItem>
+                {canSettings && (
+                  <DropdownMenuItem onSelect={() => navigate('/settings')}>
+                    <Settings className="size-4 opacity-70" />
+                    Settings
+                  </DropdownMenuItem>
+                )}
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  className="text-destructive focus:bg-destructive/10 focus:text-destructive"
+                  onSelect={logout}
+                >
+                  <LogOut className="size-4 opacity-70" />
+                  Log out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </header>
         <main className="min-h-[calc(100vh-4rem)] flex-1 px-4 py-6 md:px-7 md:py-7">
           <Outlet />
         </main>
       </div>
+
+      <ChangePasswordDialog open={passwordOpen} onOpenChange={setPasswordOpen} />
     </div>
   );
 }
