@@ -4,8 +4,6 @@ node_modules/
 .pnp.js
 
 # ── Environment & secrets ────────────────────────────────────────────────────
-.env
-.env.*
 !.env.example
 !.env.*.example
 *.pem
@@ -95,3 +93,4 @@ app.*.map.json
 *.local
 .vercel
 .serverless/
+config.bat

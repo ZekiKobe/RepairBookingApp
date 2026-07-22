@@ -138,6 +138,6 @@
   }
 
   .select-field {
-    @apply mt-1.5 flex h-10 w-full min-w-0 rounded-lg border border-input bg-background px-3 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:min-w-[10rem];
+    @apply mt-1.5 flex h-10 w-full min-w-0 rounded-lg border border-slate-300 bg-white px-3 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:min-w-[10rem] dark:border-white/15 dark:bg-muted/40;
   }
 }
